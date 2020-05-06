@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:389242882780:android:d1167501cd0603b0bf0219",
         "android_client_info": {
-          "package_name": "com.example.restaurant_app"
+          "package_name": "com.example.restaurant_app.activities"
         }
       },
       "oauth_client": [

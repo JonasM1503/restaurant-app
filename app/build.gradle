@@ -6,7 +6,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.restaurant_app"
+        applicationId "com.example.restaurant_app.activities"
         minSdkVersion 27
         targetSdkVersion 28
         versionCode 1
