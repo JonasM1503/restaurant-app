@@ -14,7 +14,8 @@ public class Food {
 // constructors
     public Food() {}
 
-    public Food(String restaurant, String name, Double price, String description, String pictureURL) {
+    public Food(String restaurant, String name, Double price, String description,
+                String pictureURL) {
         this.restaurant = restaurant;
         this.name = name;
         this.price = price;

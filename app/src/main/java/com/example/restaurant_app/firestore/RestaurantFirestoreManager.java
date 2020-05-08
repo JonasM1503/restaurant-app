@@ -1,0 +1,48 @@
+package com.example.restaurant_app.firestore;
+
+        import com.example.restaurant_app.models.Restaurant;
+        import com.google.android.gms.tasks.OnCompleteListener;
+        import com.google.firebase.firestore.CollectionReference;
+        import com.google.firebase.firestore.DocumentReference;
+        import com.google.firebase.firestore.FirebaseFirestore;
+        import com.google.firebase.firestore.QuerySnapshot;
+
+public class RestaurantFirestoreManager {
+    private static final String COLLECTION_NAME = "restaurant";
+    private static RestaurantFirestoreManager RestaurantFirestoreManager;
+    private FirebaseFirestore firebaseFirestore;
+    private CollectionReference contactsCollectionReference;
+
+    public static RestaurantFirestoreManager newInstance() {
+        if (RestaurantFirestoreManager == null) {
+            RestaurantFirestoreManager = new RestaurantFirestoreManager();
+        }
+        return RestaurantFirestoreManager;
+    }
+
+    private RestaurantFirestoreManager() {
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        contactsCollectionReference = firebaseFirestore.collection(COLLECTION_NAME);
+    }
+
+    // CRUD operations
+    public void createDrink(Restaurant restaurant) {
+        contactsCollectionReference.add(restaurant);
+    }
+
+    public void getAllRestaurants(OnCompleteListener<QuerySnapshot> onCompleteListener)
+    {
+        contactsCollectionReference.get().addOnCompleteListener(onCompleteListener);
+    }
+
+    public void updateRestaurant(Restaurant restaurant) {
+        String restaurantId = restaurant.getRestaurantId();
+        DocumentReference documentReference = contactsCollectionReference.document(restaurantId);
+        documentReference.set(restaurant);
+    }
+
+    public void deleteRestaurant(String restaurantId) {
+        DocumentReference documentReference = contactsCollectionReference.document(restaurantId);
+        documentReference.delete();
+    }
+}
