@@ -1,6 +1,9 @@
 package com.example.restaurant_app.models;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class User {
+    @DocumentId
     private String userId;
     private String email;
     private String password;

@@ -1,6 +1,9 @@
 package com.example.restaurant_app.models;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class Drink {
+    @DocumentId
     private String drinkId;
     private String restaurantId;
     private String name;
