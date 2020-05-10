@@ -12,7 +12,7 @@ public class TableFirestoreManager {
     private static final String COLLECTION_NAME = "table";
     private static com.example.restaurant_app.firestore.TableFirestoreManager tableFirestoreManager;
     private FirebaseFirestore firebaseFirestore;
-    private CollectionReference contactsCollectionReference;
+    private CollectionReference collectionReference;
 
     public static com.example.restaurant_app.firestore.TableFirestoreManager newInstance() {
         if (tableFirestoreManager == null) {
@@ -23,27 +23,27 @@ public class TableFirestoreManager {
 
     private TableFirestoreManager() {
         firebaseFirestore = FirebaseFirestore.getInstance();
-        contactsCollectionReference = firebaseFirestore.collection(COLLECTION_NAME);
+        collectionReference = firebaseFirestore.collection(COLLECTION_NAME);
     }
 
-    // CRUD operations
+// CRUD operations
     public void createTable(Table table) {
-        contactsCollectionReference.add(table);
+        collectionReference.add(table);
     }
 
     public void getAllTables(OnCompleteListener<QuerySnapshot> onCompleteListener)
     {
-        contactsCollectionReference.get().addOnCompleteListener(onCompleteListener);
+        collectionReference.get().addOnCompleteListener(onCompleteListener);
     }
 
     public void updateTable(Table table) {
         String TableId = table.getTableId();
-        DocumentReference documentReference = contactsCollectionReference.document(TableId);
+        DocumentReference documentReference = collectionReference.document(TableId);
         documentReference.set(table);
     }
 
     public void deleteTable(String TableId) {
-        DocumentReference documentReference = contactsCollectionReference.document(TableId);
+        DocumentReference documentReference = collectionReference.document(TableId);
         documentReference.delete();
     }
 }

@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentId;
 public class Food {
     @DocumentId
     private String foodId;
-    private String restaurant;      // change to Restaurant-object once available
+    private Restaurant restaurant;
     private String name;
     private Double price;
     private String description;
@@ -14,7 +14,7 @@ public class Food {
 // constructors
     public Food() {}
 
-    public Food(String restaurant, String name, Double price, String description,
+    public Food(Restaurant restaurant, String name, Double price, String description,
                 String pictureURL) {
         this.restaurant = restaurant;
         this.name = name;
@@ -28,7 +28,7 @@ public class Food {
         return foodId;
     }
 
-    public String getRestaurant() {
+    public Restaurant getRestaurant() {
         return restaurant;
     }
 
@@ -49,11 +49,7 @@ public class Food {
     }
 
 // setters
-    public void setFoodId(String foodId) {
-        this.foodId = foodId;
-    }
-
-    public void setRestaurant(String restaurant) {
+    public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
 

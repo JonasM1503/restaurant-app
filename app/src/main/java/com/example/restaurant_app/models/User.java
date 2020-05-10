@@ -40,8 +40,6 @@ public class User {
     public Boolean getAdmin() { return isAdmin;  }
 
     //setter
-    public void setUserId(String userId) { this.userId = userId; }
-
     public void setEmail(String email) { this.email = email; }
 
     public void setPassword(String password) { this.password = password; }

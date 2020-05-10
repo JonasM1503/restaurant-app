@@ -36,9 +36,6 @@ public class Drink {
     public String getPictureUrl() { return pictureUrl; }
 
     //setter
-
-    public void setDrinkId(String drinkId) { this.drinkId = drinkId; }
-
     public void setRestaurantId(String restaurantId) { this.restaurantId = restaurantId; }
 
     public void setName(String name) { this.name = name; }

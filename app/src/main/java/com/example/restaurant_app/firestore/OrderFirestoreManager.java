@@ -12,7 +12,7 @@ public class OrderFirestoreManager {
     private static final String COLLECTION_NAME = "order";
     private static OrderFirestoreManager orderFirestoreManager;
     private FirebaseFirestore firebaseFirestore;
-    private CollectionReference contactsCollectionReference;
+    private CollectionReference collectionReference;
 
     public static OrderFirestoreManager newInstance() {
         if (orderFirestoreManager == null) {
@@ -23,27 +23,27 @@ public class OrderFirestoreManager {
 
     private OrderFirestoreManager() {
         firebaseFirestore = FirebaseFirestore.getInstance();
-        contactsCollectionReference = firebaseFirestore.collection(COLLECTION_NAME);
+        collectionReference = firebaseFirestore.collection(COLLECTION_NAME);
     }
 
 // CRUD operations
     public void createOrder(Order order) {
-        contactsCollectionReference.add(order);
+        collectionReference.add(order);
     }
 
     public void getAllOrders(OnCompleteListener<QuerySnapshot> onCompleteListener)
     {
-        contactsCollectionReference.get().addOnCompleteListener(onCompleteListener);
+        collectionReference.get().addOnCompleteListener(onCompleteListener);
     }
 
     public void updateOrder(Order order) {
         String OrderId = order.getOrderId();
-        DocumentReference documentReference = contactsCollectionReference.document(OrderId);
+        DocumentReference documentReference = collectionReference.document(OrderId);
         documentReference.set(order);
     }
 
     public void deleteOrder(String OrderId) {
-        DocumentReference documentReference = contactsCollectionReference.document(OrderId);
+        DocumentReference documentReference = collectionReference.document(OrderId);
         documentReference.delete();
     }
 }

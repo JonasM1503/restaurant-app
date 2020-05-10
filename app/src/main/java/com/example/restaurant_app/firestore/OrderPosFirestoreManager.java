@@ -12,7 +12,7 @@ public class OrderPosFirestoreManager {
     private static final String COLLECTION_NAME = "orderPos";
     private static com.example.restaurant_app.firestore.OrderPosFirestoreManager orderPosFirestoreManager;
     private FirebaseFirestore firebaseFirestore;
-    private CollectionReference contactsCollectionReference;
+    private CollectionReference collectionReference;
 
     public static com.example.restaurant_app.firestore.OrderPosFirestoreManager newInstance() {
         if (orderPosFirestoreManager == null) {
@@ -23,27 +23,27 @@ public class OrderPosFirestoreManager {
 
     private OrderPosFirestoreManager() {
         firebaseFirestore = FirebaseFirestore.getInstance();
-        contactsCollectionReference = firebaseFirestore.collection(COLLECTION_NAME);
+        collectionReference = firebaseFirestore.collection(COLLECTION_NAME);
     }
 
 // CRUD operations
     public void createOrderPos(OrderPos order) {
-        contactsCollectionReference.add(order);
+        collectionReference.add(order);
     }
 
     public void getAllOrderPos(OnCompleteListener<QuerySnapshot> onCompleteListener)
     {
-        contactsCollectionReference.get().addOnCompleteListener(onCompleteListener);
+        collectionReference.get().addOnCompleteListener(onCompleteListener);
     }
 
     public void updateOrderPos(OrderPos orderPos) {
         String OrderPosId = orderPos.getOrderPosId();
-        DocumentReference documentReference = contactsCollectionReference.document(OrderPosId);
+        DocumentReference documentReference = collectionReference.document(OrderPosId);
         documentReference.set(orderPos);
     }
 
     public void deleteOrderPos(String OrderPosId) {
-        DocumentReference documentReference = contactsCollectionReference.document(OrderPosId);
+        DocumentReference documentReference = collectionReference.document(OrderPosId);
         documentReference.delete();
     }
 }

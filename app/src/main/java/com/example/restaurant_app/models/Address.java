@@ -32,8 +32,6 @@ public class Address {
     public String getAddressCountry() { return addressCountry; }
 
     //setter
-    public void setAddressId(String addressId) { this.addressId = addressId; }
-
     public void setAddressStreet(String addressStreet) { this.addressStreet = addressStreet; }
 
     public void setAddressZipCode(String addressZipCode) { this.addressZipCode = addressZipCode; }

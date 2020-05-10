@@ -12,7 +12,9 @@ public class FoodFirestoreManager {
     private static final String COLLECTION_NAME = "food";
     private static FoodFirestoreManager foodFirestoreManager;
     private FirebaseFirestore firebaseFirestore;
-    private CollectionReference contactsCollectionReference;
+    private CollectionReference collectionReference;
+
+    private Food food;
 
     public static FoodFirestoreManager newInstance() {
         if (foodFirestoreManager == null) {
@@ -23,27 +25,27 @@ public class FoodFirestoreManager {
 
     private FoodFirestoreManager() {
         firebaseFirestore = FirebaseFirestore.getInstance();
-        contactsCollectionReference = firebaseFirestore.collection(COLLECTION_NAME);
+        collectionReference = firebaseFirestore.collection(COLLECTION_NAME);
     }
 
 // CRUD operations
     public void createFood(Food food) {
-        contactsCollectionReference.add(food);
+        collectionReference.add(food);
     }
 
     public void getAllFoods(OnCompleteListener<QuerySnapshot> onCompleteListener)
     {
-        contactsCollectionReference.get().addOnCompleteListener(onCompleteListener);
+        collectionReference.get().addOnCompleteListener(onCompleteListener);
     }
 
     public void updateFood(Food food) {
         String FoodId = food.getFoodId();
-        DocumentReference documentReference = contactsCollectionReference.document(FoodId);
+        DocumentReference documentReference = collectionReference.document(FoodId);
         documentReference.set(food);
     }
 
     public void deleteFood(String FoodId) {
-        DocumentReference documentReference = contactsCollectionReference.document(FoodId);
+        DocumentReference documentReference = collectionReference.document(FoodId);
         documentReference.delete();
     }
 }

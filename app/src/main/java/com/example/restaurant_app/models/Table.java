@@ -30,10 +30,6 @@ public class Table {
     }
 
 // setters
-    public void setTableId(String tableId) {
-        this.tableId = tableId;
-    }
-
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }

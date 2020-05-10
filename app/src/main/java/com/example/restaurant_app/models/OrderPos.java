@@ -41,10 +41,6 @@ public class OrderPos {
     }
 
 // setters
-    public void setOrderPosId(String orderPosId) {
-        this.orderPosId = orderPosId;
-    }
-
     public void setOrder(Order order) {
         this.order = order;
     }

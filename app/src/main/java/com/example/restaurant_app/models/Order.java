@@ -36,10 +36,6 @@ public class Order {
     }
 
 // setters
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
