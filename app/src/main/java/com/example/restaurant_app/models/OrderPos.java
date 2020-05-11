@@ -2,6 +2,11 @@ package com.example.restaurant_app.models;
 
 import com.google.firebase.firestore.DocumentId;
 
+/**
+ *
+ * @author Jonas Mitschke
+ * @content definition of orderPos-class
+ */
 public class OrderPos {
     @DocumentId
     private String orderPosId;

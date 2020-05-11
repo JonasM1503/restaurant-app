@@ -7,6 +7,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
+ *
+ * @author Jonas Mitschke
+ * @content handler for CRUD-operations to firestore
+ */
 public class OrderPosFirestoreManager {
 
     private static final String COLLECTION_NAME = "orderPos";

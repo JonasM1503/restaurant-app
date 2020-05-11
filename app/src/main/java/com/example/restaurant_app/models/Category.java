@@ -5,33 +5,33 @@ import com.google.firebase.firestore.DocumentId;
 /**
  *
  * @author Jonas Mitschke
- * @content definition of table-class
+ * @content definition of category-class
  */
-public class Table {
+public class Category {
     @DocumentId
-    private String tableId;
+    private String categoryId;
     private Restaurant restaurant;
-    private String qrCode;
+    private String name;
 
 // constructors
-    public Table() {}
+    public Category() {}
 
-    public Table(Restaurant restaurant, String qrCode) {
+    public Category(Restaurant restaurant, String name) {
         this.restaurant = restaurant;
-        this.qrCode = qrCode;
+        this.name = name;
     }
 
 // getters
-    public String getTableId() {
-        return tableId;
+    public String getCategoryId() {
+        return categoryId;
     }
 
     public Restaurant getRestaurant() {
         return restaurant;
     }
 
-    public String getQrCode() {
-        return qrCode;
+    public String getName() {
+        return name;
     }
 
 // setters
@@ -39,7 +39,7 @@ public class Table {
         this.restaurant = restaurant;
     }
 
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
+    public void setName(String name) {
+        this.name = name;
     }
 }

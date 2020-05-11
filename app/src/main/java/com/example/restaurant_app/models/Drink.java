@@ -6,16 +6,18 @@ public class Drink {
     @DocumentId
     private String drinkId;
     private String restaurantId;
+    private Category category;
     private String name;
     private Double price;
     private String description;
     private String pictureUrl;
 
     //constructor
-    public Drink(String drinkId, String restaurantId, String name, Double price,
+    public Drink(String drinkId, String restaurantId, Category category, String name, Double price,
                  String description, String pictureUrl) {
         this.drinkId = drinkId;
         this.restaurantId = restaurantId;
+        this.category = category;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -27,6 +29,10 @@ public class Drink {
 
     public String getRestaurantId() { return restaurantId; }
 
+    public Category getCategory() {
+        return category;
+    }
+
     public String getName() { return name; }
 
     public Double getPrice() { return price; }
@@ -37,6 +43,10 @@ public class Drink {
 
     //setter
     public void setRestaurantId(String restaurantId) { this.restaurantId = restaurantId; }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public void setName(String name) { this.name = name; }
 
