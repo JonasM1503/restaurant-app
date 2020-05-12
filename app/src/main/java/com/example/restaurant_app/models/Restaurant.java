@@ -2,42 +2,41 @@ package com.example.restaurant_app.models;
 
 import com.google.firebase.firestore.DocumentId;
 
+/**
+ *
+ * @author Simon Rothmann
+ * @content definition of restaurant-class
+ */
 public class Restaurant {
     @DocumentId
     private String restaurantId;
-    private String userId;
     private String restaurantName;
-    private String addressId;
+    private Address address;
     private String taxNumber;
 
     //constructor
-    public Restaurant(String restaurantId, String userId, String restaurantName,
-                      String addressId, String taxNumber)
+    public Restaurant(String restaurantName, Address address, String taxNumber)
     {
-        this.restaurantId = restaurantId;
-        this.userId = userId;
         this.restaurantName = restaurantName;
-        this.addressId = addressId;
+        this.address = address;
         this.taxNumber = taxNumber;
     }
 
     //getter
     public String getRestaurantId() { return restaurantId; }
-
-    public String getUserId() { return userId; }
+    
 
     public String getRestaurantName() { return restaurantName; }
 
-    public String getAddressId() { return addressId; }
+    public Address getAddress() { return address; }
 
     public String getTaxNumber() {  return taxNumber; }
 
     //setter
-    public void setUserId(String userId) { this.userId = userId; }
 
     public void setRestaurantName(String restaurantName) { this.restaurantName = restaurantName; }
 
-    public void setAddressId(String addressStreet) { this.addressId = addressStreet; }
+    public void setAddress(Address address) { this.address = address; }
 
     public void setTaxNumber(String taxNumber) { this.taxNumber = taxNumber; }
 }

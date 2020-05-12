@@ -1,7 +1,11 @@
 package com.example.restaurant_app.models;
 
 import com.google.firebase.firestore.DocumentId;
-
+/**
+ *
+ * @author Simon Rothmann
+ * @content definition of address-class
+ */
 public class Address {
     @DocumentId
     private String addressId;
@@ -11,9 +15,8 @@ public class Address {
     private String addressCountry;
 
     //constructor
-    public Address(String addressId, String addressStreet, String addressZipCode,
+    public Address(String addressStreet, String addressZipCode,
                    String addressCity, String addressCountry) {
-        this.addressId = addressId;
         this.addressStreet = addressStreet;
         this.addressZipCode = addressZipCode;
         this.addressCity = addressCity;

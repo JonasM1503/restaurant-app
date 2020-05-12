@@ -1,11 +1,15 @@
 package com.example.restaurant_app.models;
 
 import com.google.firebase.firestore.DocumentId;
-
+/**
+ *
+ * @author Simon Rothmann
+ * @content definition of drink-class
+ */
 public class Drink {
     @DocumentId
     private String drinkId;
-    private String restaurantId;
+    private Restaurant restaurant;
     private Category category;
     private String name;
     private Double price;
@@ -13,10 +17,9 @@ public class Drink {
     private String pictureUrl;
 
     //constructor
-    public Drink(String drinkId, String restaurantId, Category category, String name, Double price,
+    public Drink(Restaurant restaurantId, Category category, String name, Double price,
                  String description, String pictureUrl) {
-        this.drinkId = drinkId;
-        this.restaurantId = restaurantId;
+        this.restaurant = restaurantId;
         this.category = category;
         this.name = name;
         this.price = price;
@@ -27,7 +30,7 @@ public class Drink {
     //getter
     public String getDrinkId() { return drinkId; }
 
-    public String getRestaurantId() { return restaurantId; }
+    public Restaurant getRestaurant() { return restaurant; }
 
     public Category getCategory() {
         return category;
@@ -42,7 +45,7 @@ public class Drink {
     public String getPictureUrl() { return pictureUrl; }
 
     //setter
-    public void setRestaurantId(String restaurantId) { this.restaurantId = restaurantId; }
+    public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
 
     public void setCategory(Category category) {
         this.category = category;

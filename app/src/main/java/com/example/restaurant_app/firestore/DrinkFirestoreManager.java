@@ -7,7 +7,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
+/**
+ *
+ * @author Simon Rothmann
+ * @content handler for CRUD-operations to firestore
+ */
 public class DrinkFirestoreManager {
     private static final String COLLECTION_NAME = "drink";
     private static DrinkFirestoreManager DrinkFirestoreManager;

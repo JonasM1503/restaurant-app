@@ -1,7 +1,11 @@
 package com.example.restaurant_app.models;
 
 import com.google.firebase.firestore.DocumentId;
-
+/**
+ *
+ * @author Simon Rothmann
+ * @content definition of user-class
+ */
 public class User {
     @DocumentId
     private String userId;
@@ -9,19 +13,25 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private String addressId;
-    private Boolean isAdmin;
+    private Address address;
+    private Boolean isActive;
+    private Restaurant restaurant;
 
     //constructor
-    public User(String userId, String email, String password, String firstName, String lastName,
-                String addressId, Boolean isAdmin) {
-        this.userId = userId;
+    public User(String email, String password, String firstName, String lastName,
+                Address address, Boolean isActive, Restaurant restaurant) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.addressId = addressId;
-        this.isAdmin = isAdmin;
+        this.address = address;
+        this.isActive = isActive;
+        this.restaurant = restaurant;
+    }
+
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
     }
 
     //getter
@@ -35,9 +45,11 @@ public class User {
 
     public String getLastName() { return lastName; }
 
-    public String getAddressId() { return addressId; }
+    public Address getAddress() { return address; }
 
-    public Boolean getAdmin() { return isAdmin;  }
+    public Boolean getAdmin() { return isActive;  }
+
+    public Restaurant getRestaurant() { return restaurant; }
 
     //setter
     public void setEmail(String email) { this.email = email; }
@@ -48,7 +60,9 @@ public class User {
 
     public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public void setAddressId(String addressId) { this.addressId = addressId; }
+    public void setAddress(Address address) { this.address = address; }
 
-    public void setAdmin(Boolean admin) { isAdmin = admin; }
+    public void setAdmin(Boolean admin) { isActive = admin; }
+
+    public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
 }
