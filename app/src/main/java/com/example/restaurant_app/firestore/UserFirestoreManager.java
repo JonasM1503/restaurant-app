@@ -2,10 +2,15 @@ package com.example.restaurant_app.firestore;
 
 import com.example.restaurant_app.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
+
 /**
  *
  * @author Simon Rothmann
@@ -48,5 +53,27 @@ public class UserFirestoreManager {
     public void deleteUser(String userId) {
         DocumentReference documentReference = collectionReference.document(userId);
         documentReference.delete();
+    }
+
+// find user by email
+    public interface MyCallback {
+        void onCallback(User user);
+    }
+
+    public void getUserByEmail(String email, final MyCallback myCallback){
+        Task<QuerySnapshot> doc = collectionReference.whereEqualTo("email", email).get();
+        doc.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot querySnapshot) {
+                List<User> return_users = querySnapshot.toObjects(User.class);
+                User return_user = return_users.get(0);
+                myCallback.onCallback(return_user);
+            }
+        });
+    }
+
+// check password for login
+    public static boolean checkPassword(User user, String input_password) {
+        return user.getPassword().compareTo(User.hashPassword(input_password)) == 0;
     }
 }

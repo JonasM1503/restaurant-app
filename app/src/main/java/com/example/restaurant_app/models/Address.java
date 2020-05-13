@@ -15,6 +15,9 @@ public class Address {
     private String addressCountry;
 
     //constructor
+    public Address() {
+    }
+
     public Address(String addressStreet, String addressZipCode,
                    String addressCity, String addressCountry) {
         this.addressStreet = addressStreet;

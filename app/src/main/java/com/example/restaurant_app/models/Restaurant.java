@@ -15,6 +15,9 @@ public class Restaurant {
     private String taxNumber;
 
     //constructor
+    public Restaurant(){
+    }
+
     public Restaurant(String restaurantName, Address address, String taxNumber)
     {
         this.restaurantName = restaurantName;
