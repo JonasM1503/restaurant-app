@@ -2,4 +2,7 @@
     <string name="app_name">restaurant-app</string>
 
     <string name="test_string">Hallo Welt!!!</string>
+    <string name="view_users_button">Userverwaltung</string>
+    <string name="headline_user_overview">Userverwaltung</string>
+    <string name="view_user_button">Bearbeiten</string>
 </resources>

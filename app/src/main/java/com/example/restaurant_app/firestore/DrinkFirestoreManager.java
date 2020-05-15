@@ -1,6 +1,7 @@
 package com.example.restaurant_app.firestore;
 
 
+import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Drink;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -13,7 +14,7 @@ import com.google.firebase.firestore.QuerySnapshot;
  * @content handler for CRUD-operations to firestore
  */
 public class DrinkFirestoreManager {
-    private static final String COLLECTION_NAME = "drink";
+    private static final String COLLECTION_NAME = CollectionNames.drinkCollection;
     private static DrinkFirestoreManager DrinkFirestoreManager;
     private FirebaseFirestore firebaseFirestore;
     private CollectionReference collectionReference;

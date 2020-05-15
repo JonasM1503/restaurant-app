@@ -1,5 +1,6 @@
 package com.example.restaurant_app.firestore;
 
+import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -17,7 +18,7 @@ import java.util.List;
  * @content handler for CRUD-operations to firestore
  */
 public class UserFirestoreManager {
-    private static final String COLLECTION_NAME = "user";
+    private static final String COLLECTION_NAME = CollectionNames.userCollection;
     private static UserFirestoreManager UserFirestoreManager;
     private FirebaseFirestore firebaseFirestore;
     private CollectionReference collectionReference;
@@ -56,18 +57,18 @@ public class UserFirestoreManager {
     }
 
 // find user by email
-    public interface MyCallback {
+    public interface GetUserByEmailCallback {
         void onCallback(User user);
     }
 
-    public void getUserByEmail(String email, final MyCallback myCallback){
+    public void getUserByEmail(String email, final GetUserByEmailCallback callback){
         Task<QuerySnapshot> doc = collectionReference.whereEqualTo("email", email).get();
         doc.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot querySnapshot) {
                 List<User> return_users = querySnapshot.toObjects(User.class);
                 User return_user = return_users.get(0);
-                myCallback.onCallback(return_user);
+                callback.onCallback(return_user);
             }
         });
     }
