@@ -2,12 +2,15 @@ package com.example.restaurant_app.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.restaurant_app.activities.R;
+import com.example.restaurant_app.activities.UserDetailActivity;
 import com.example.restaurant_app.models.User;
 
 import java.util.List;
@@ -23,10 +26,19 @@ public class UsersAdapter extends ArrayAdapter<User> {
             convertView =  ((Activity)getContext()).getLayoutInflater().inflate(R.layout.item_users,parent,false);
         }
 
-        TextView emailTextView = (TextView) convertView.findViewById(R.id.user_email);
-        TextView nameTextView = (TextView) convertView.findViewById(R.id.user_full_name);
+        TextView emailTextView = convertView.findViewById(R.id.user_email);
+        TextView nameTextView = convertView.findViewById(R.id.user_full_name);
+        Button viewUserButton = convertView.findViewById(R.id.viewUserButton);
 
-        User user = getItem(position);
+        final User user = getItem(position);
+
+        viewUserButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), UserDetailActivity.class);
+                intent.putExtra("userEmail", user.getEmail());
+                v.getContext().startActivity(intent);
+            }
+        });
 
         emailTextView.setText(user.getEmail());
         String nameText = user.getFirstName() + " " + user.getLastName();
@@ -34,5 +46,4 @@ public class UsersAdapter extends ArrayAdapter<User> {
 
         return convertView;
     }
-
 }
