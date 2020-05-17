@@ -72,6 +72,11 @@ public class User {
 
     public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
 
+    // check if user is admin
+    public boolean isAdmin(){
+        return this.getRestaurant().getRestaurantId() != "";
+    }
+
     // hash password
     public static String hashPassword(String password) {
         byte[] hash;

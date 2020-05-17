@@ -20,9 +20,21 @@
         </activity>
         <activity android:name=".RegistrationActivity"
             android:parentActivityName=".MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".UserListActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".UserDetailActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 

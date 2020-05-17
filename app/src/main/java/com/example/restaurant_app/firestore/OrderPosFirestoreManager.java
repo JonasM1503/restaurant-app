@@ -1,5 +1,6 @@
 package com.example.restaurant_app.firestore;
 
+import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.OrderPos;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -14,7 +15,7 @@ import com.google.firebase.firestore.QuerySnapshot;
  */
 public class OrderPosFirestoreManager {
 
-    private static final String COLLECTION_NAME = "orderPos";
+    private static final String COLLECTION_NAME = CollectionNames.orderPosCollection;
     private static com.example.restaurant_app.firestore.OrderPosFirestoreManager orderPosFirestoreManager;
     private FirebaseFirestore firebaseFirestore;
     private CollectionReference collectionReference;

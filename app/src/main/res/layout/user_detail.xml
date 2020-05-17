@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    >
+
+    <EditText
+        android:id="@+id/userUpdateEmail"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateFirstname" />
+
+    <EditText
+        android:id="@+id/userUpdateStreet"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateEmail" />
+
+    <EditText
+        android:id="@+id/userUpdateZipCode"
+        android:layout_width="137dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateStreet" />
+
+    <EditText
+        android:id="@+id/userUpdateCity"
+        android:layout_width="132dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateZipCode" />
+
+    <EditText
+        android:id="@+id/userUpdateRestaurantname"
+        android:layout_width="139dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateCity" />
+
+    <EditText
+        android:id="@+id/userUpdateUstId"
+        android:layout_width="128dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateRestaurantname" />
+
+    <Button
+        android:id="@+id/userUpdateDeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/button_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/userUpdateSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/button_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/userUpdateLastname"
+        android:layout_width="151dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:autoSizeTextType="none"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headlineUserDetailText" />
+
+    <EditText
+        android:id="@+id/userUpdateFirstname"
+        android:layout_width="148dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateLastname" />
+
+    <TextView
+        android:id="@+id/headlineUserDetailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/headline_user_detail"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lastnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_lastname"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headlineUserDetailText" />
+
+    <TextView
+        android:id="@+id/streetLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_street"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateEmail" />
+
+    <TextView
+        android:id="@+id/ZipLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_zip"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateStreet" />
+
+    <TextView
+        android:id="@+id/cityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_city"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateZipCode" />
+
+    <TextView
+        android:id="@+id/restaurantnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_restaurantname"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateCity" />
+
+    <TextView
+        android:id="@+id/isActiveLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_is_admin"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateUstId" />
+
+    <TextView
+        android:id="@+id/taxIdLabel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_tax_id"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateRestaurantname" />
+
+    <TextView
+        android:id="@+id/emailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_email"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateFirstname" />
+
+    <TextView
+        android:id="@+id/firstnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/text_firstname"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateLastname" />
+
+    <Switch
+        android:id="@+id/isActiveSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userUpdateUstId" />
+</androidx.constraintlayout.widget.ConstraintLayout>

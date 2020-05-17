@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">restaurant-app</string>
+
+    <!--    Userverwaltung    -->
+    <string name="view_users_button">Userverwaltung</string>
+    <string name="headline_user_list">Userverwaltung</string>
+    <string name="view_user_button">Bearbeiten</string>
+    <string name="headline_user_detail">Userübersicht</string>
+    <string name="button_update">Bearbeiten</string>
+    <string name="button_delete">Löschen</string>
+    <string name="button_save">Speichern</string>
+    <string name="text_firstname">Vorname</string>
+    <string name="text_lastname">Nachname</string>
+    <string name="text_email">E-Mail-Adresse</string>
+    <string name="text_street">Straße</string>
+    <string name="text_zip">PLZ</string>
+    <string name="text_city">Stadt</string>
+    <string name="text_restaurantname">Restaurantname</string>
+    <string name="text_tax_id">Ust-Id</string>
+    <string name="text_is_admin">Öffentlich</string>
 </resources>
