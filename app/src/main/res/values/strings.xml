@@ -1,11 +1,16 @@
 <resources>
     <string name="app_name">restaurant-app</string>
 
-    <!--    Userverwaltung    -->
+    <!--    Verwaltungsübersicht    -->
+    <string name="headline_overview">Verwaltung</string>
     <string name="view_users_button">Userverwaltung</string>
+    <string name="view_user_profile_button">Profil bearbeiten</string>
+    <string name="change_PW_button">Passwort ändern</string>
+
+    <!--    Userverwaltung    -->
     <string name="headline_user_list">Userverwaltung</string>
-    <string name="view_user_button">Bearbeiten</string>
     <string name="headline_user_detail">Userübersicht</string>
+    <string name="view_user_button">Bearbeiten</string>
     <string name="button_update">Bearbeiten</string>
     <string name="button_delete">Löschen</string>
     <string name="button_save">Speichern</string>
@@ -18,4 +23,8 @@
     <string name="text_restaurantname">Restaurantname</string>
     <string name="text_tax_id">Ust-Id</string>
     <string name="text_is_admin">Öffentlich</string>
+    <string name="headline_password_change">Passwort ändern</string>
+    <string name="text_old_password">Altes Passwort</string>
+    <string name="text_new_password">Neues Passwort</string>
+    <string name="button_password_save">Ändern</string>
 </resources>

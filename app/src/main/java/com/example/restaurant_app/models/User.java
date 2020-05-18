@@ -77,7 +77,7 @@ public class User {
 
     // check if user is admin
     public boolean isAdmin(){
-        return this.getRestaurant().getRestaurantId() != "";
+        return this.getRestaurant() == null;
     }
 
     // hash password

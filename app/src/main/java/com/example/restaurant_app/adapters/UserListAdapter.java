@@ -15,8 +15,13 @@ import com.example.restaurant_app.models.User;
 
 import java.util.List;
 
-public class UsersAdapter extends ArrayAdapter<User> {
-    public UsersAdapter(Context context, List<User> object){
+/**
+ *
+ * @author Jonas Mitschke
+ * @content adapter for user data to listview-item
+ */
+public class UserListAdapter extends ArrayAdapter<User> {
+    public UserListAdapter(Context context, List<User> object){
         super(context,0, object);
     }
 

@@ -1,5 +1,10 @@
 package com.example.restaurant_app.helpers;
 
+/**
+ *
+ * @author Jonas Mitschke
+ * @content definition of firestore-colleaction-names
+ */
 public class CollectionNames {
     public static final String addressCollection = "address";
     public static final String categoryCollection = "category";

@@ -72,9 +72,4 @@ public class UserFirestoreManager {
             }
         });
     }
-
-// check password for login
-    public static boolean checkPassword(User user, String input_password) {
-        return user.getPassword().compareTo(User.hashPassword(input_password)) == 0;
-    }
 }
