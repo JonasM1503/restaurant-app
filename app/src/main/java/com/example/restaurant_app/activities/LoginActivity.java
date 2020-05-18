@@ -2,9 +2,7 @@ package com.example.restaurant_app.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                             String user_json = gson.toJson(user);
                             Context context = getBaseContext();
                             SharedPreferencesAdapter spAdapter = new SharedPreferencesAdapter();
-                            spAdapter.setDetaults("currentUser", user_json, context);
+                            spAdapter.setDefaults("currentUser", user_json, context);
                             //hier weiterleitung auf übersichtsseite.
                             Intent intent = new Intent(v.getContext(), OverviewActivity.class);
                             v.getContext().startActivity(intent);
