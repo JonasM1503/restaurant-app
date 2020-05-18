@@ -24,6 +24,9 @@ public class User {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
     //constructor
+    public User() {
+    }
+
     public User(String email, String password, String firstName, String lastName,
                 Address address, Boolean isActive, Restaurant restaurant) {
         this.email = email;
@@ -60,7 +63,7 @@ public class User {
     //setter
     public void setEmail(String email) { this.email = email; }
 
-    public void setPassword(String password) { this.password = this.hashPassword(password); }
+    public void setPassword(String password) { this.password = hashPassword(password); }
 
     public void setFirstName(String firstName) { this.firstName = firstName; }
 
@@ -68,7 +71,7 @@ public class User {
 
     public void setAddress(Address address) { this.address = address; }
 
-    public void setActive(Boolean isActive) { isActive = isActive; }
+    public void setIsActive(Boolean isActive) { isActive = isActive; }
 
     public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
 
