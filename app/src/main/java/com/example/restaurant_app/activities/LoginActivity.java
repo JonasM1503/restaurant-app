@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.restaurant_app.adapters.SharedPreferencesAdapter;
 import com.example.restaurant_app.firestore.UserFirestoreManager;
 import com.example.restaurant_app.models.User;
 import com.google.gson.Gson;
@@ -50,9 +53,8 @@ public class LoginActivity extends AppCompatActivity {
                             Gson gson = new Gson();
                             String user_json = gson.toJson(user);
                             Context context = getBaseContext();
-                            SharedPreferences settings = context.getSharedPreferences("UserInfo", 0);
-                            SharedPreferences.Editor editor = settings.edit();
-                            editor.putString("currentUser", user_json);
+                            SharedPreferencesAdapter spAdapter = new SharedPreferencesAdapter();
+                            spAdapter.setDetaults("currentUser", user_json, context);
                             //hier weiterleitung auf übersichtsseite.
                             Intent intent = new Intent(v.getContext(), OverviewActivity.class);
                             v.getContext().startActivity(intent);
