@@ -12,8 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * @content definition of user-class
  */
 public class User {
-    @DocumentId
-    private String userId;
+
     private String email;
     private String password;
     private String firstName;
@@ -44,7 +43,6 @@ public class User {
     }
 
     //getter
-    public String getUserId() { return userId; }
 
     public String getEmail() { return email; }
 

@@ -50,4 +50,8 @@
     <string name="dialog_delete_user">Den Account wirklich löschen?</string>
     <string name="button_confirm">Ja, bitte!</string>
     <string name="button_cancel">Abbrechen</string>
+    <string name="registration_heading">Registration</string>
+    <string name="text_password">Passwort</string>
+    <string name="text_street_number">Straße, Hausnummer</string>
+    <string name="text_login">Login</string>
 </resources>

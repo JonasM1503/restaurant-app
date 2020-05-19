@@ -37,7 +37,7 @@ public class UserFirestoreManager {
 
 // CRUD operations
     public void createUser(User user) {
-        collectionReference.add(user);
+        collectionReference.document(user.getEmail()).set(user);
     }
 
     public void getAllUsers(OnCompleteListener<QuerySnapshot> onCompleteListener)
@@ -46,13 +46,13 @@ public class UserFirestoreManager {
     }
 
     public void updateUser(User user) {
-        String userId = user.getUserId();
-        DocumentReference documentReference = collectionReference.document(userId);
+        String userEmail = user.getEmail();
+        DocumentReference documentReference = collectionReference.document(userEmail);
         documentReference.set(user);
     }
 
-    public void deleteUser(String userId) {
-        DocumentReference documentReference = collectionReference.document(userId);
+    public void deleteUser(String userEmail) {
+        DocumentReference documentReference = collectionReference.document(userEmail);
         documentReference.delete();
     }
 
