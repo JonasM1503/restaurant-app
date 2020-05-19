@@ -51,8 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                             Gson gson = new Gson();
                             String user_json = gson.toJson(user);
                             Context context = getBaseContext();
-                            SharedPreferencesAdapter spAdapter = new SharedPreferencesAdapter();
-                            spAdapter.setDefaults("currentUser", user_json, context);
+                            SharedPreferencesAdapter.setDefaults("currentUser", user_json, context);
                             //hier weiterleitung auf übersichtsseite.
                             Intent intent = new Intent(v.getContext(), OverviewActivity.class);
                             v.getContext().startActivity(intent);

@@ -8,6 +8,8 @@
     <string name="change_PW_button">Passwort ändern</string>
 
     <!--    Userverwaltung    -->
+    <string name="button_login">Login</string>
+    <string name="button_register">Registrieren</string>
     <string name="headline_user_list">Userverwaltung</string>
     <string name="headline_user_detail">Userübersicht</string>
     <string name="view_user_button">Bearbeiten</string>
@@ -27,4 +29,9 @@
     <string name="text_old_password">Altes Passwort</string>
     <string name="text_new_password">Neues Passwort</string>
     <string name="button_password_save">Ändern</string>
+    <string name="toast_wrong_old_pw">Altes Passwort nicht korrekt</string>
+    <string name="toast_no_permition">Keine Berechtigung</string>
+    <string name="dialog_delete_user">Den Account wirklich löschen?</string>
+    <string name="button_confirm">Ja, bitte!</string>
+    <string name="button_cancel">Abbrechen</string>
 </resources>

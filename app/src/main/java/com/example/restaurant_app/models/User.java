@@ -71,7 +71,7 @@ public class User {
 
     public void setAddress(Address address) { this.address = address; }
 
-    public void setIsActive(Boolean isActive) { isActive = isActive; }
+    public void setIsActive(Boolean isActive) { this.isActive = isActive; }
 
     public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
 
