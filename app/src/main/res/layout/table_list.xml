@@ -7,22 +7,22 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/userHeadingText"
+        android:id="@+id/tableHeadingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="@string/headline_user_list"
+        android:text="@string/headline_table_list"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/userList"
+        android:id="@+id/tableList"
         android:layout_width="409dp"
         android:layout_height="780dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userHeadingText" />
+        app:layout_constraintTop_toBottomOf="@+id/tableHeadingText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

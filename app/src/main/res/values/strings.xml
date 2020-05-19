@@ -6,6 +6,22 @@
     <string name="view_users_button">Userverwaltung</string>
     <string name="view_user_profile_button">Profil bearbeiten</string>
     <string name="change_PW_button">Passwort ändern</string>
+    <string name="view_drinks_button">Getränkeverwaltung</string>
+    <string name="view_foods_button">Essensverwaltung</string>
+    <string name="view_tables_button">Tischverwaltung</string>
+
+    <!--    Verwaltungen    -->
+    <string name="headline_drink_list">Getränkeverwaltung</string>
+    <string name="headline_drink_detail">Getränkeübersicht</string>
+    <string name="text_drinkname">Bezeichnung</string>
+    <string name="text_drinkprice">Preis</string>
+    <string name="text_drinkdescription">Beschreibung</string>
+    <string name="text_drinkpicture">Bild-URL</string>
+    <string name="dialog_delete_drink">Den Account wirklich löschen?</string>
+    <string name="headline_table_list">Tischverwaltung</string>
+    <string name="headline_table_detail">Tischübersicht</string>
+    <string name="text_tableQR">QR-Code</string>
+    <string name="dialog_delete_table">Den Tisch wirklich löschen?</string>
 
     <!--    Userverwaltung    -->
     <string name="button_login">Login</string>

@@ -27,13 +27,13 @@ public class OverviewActivity extends AppCompatActivity {
         Context context = getBaseContext();
         final User curUser = gson.fromJson(SharedPreferencesAdapter.getDefaults("currentUser",context), User.class);
 
-        final Button viewUserButton = findViewById(R.id.viewUserButton);
+        final Button viewUsersButton = findViewById(R.id.viewUserButton);
         if (curUser.isAdmin()){
             ((Button) findViewById(R.id.viewUserButton)).setText(getResources().getString(R.string.view_users_button));
         } else {
             ((Button) findViewById(R.id.viewUserButton)).setText(getResources().getString(R.string.view_user_profile_button));
         }
-        viewUserButton.setOnClickListener(new View.OnClickListener() {
+        viewUsersButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (curUser.isAdmin()){
                     Intent intent = new Intent(v.getContext(), UserListActivity.class);
@@ -50,6 +50,32 @@ public class OverviewActivity extends AppCompatActivity {
         updatePWButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PasswordChangeActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        final Button viewDrinksButton = findViewById(R.id.viewDrinkButton);
+        viewDrinksButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DrinkListActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        /*
+        final Button viewFoodsButton = findViewById(R.id.viewFoodButton);
+        viewFoodsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), FoodListActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+        */
+
+        final Button viewTablesButton = findViewById(R.id.viewTableButton);
+        viewTablesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), TableListActivity.class);
                 v.getContext().startActivity(intent);
             }
         });
