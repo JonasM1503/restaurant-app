@@ -62,7 +62,7 @@ public class OverviewActivity extends AppCompatActivity {
             }
         });
 
-        /*
+
         final Button viewFoodsButton = findViewById(R.id.viewFoodButton);
         viewFoodsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -70,7 +70,7 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
-        */
+
 
         final Button viewTablesButton = findViewById(R.id.viewTableButton);
         viewTablesButton.setOnClickListener(new View.OnClickListener() {

@@ -3,10 +3,14 @@ package com.example.restaurant_app.firestore;
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Food;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
 
 /**
  *
@@ -53,5 +57,22 @@ public class FoodFirestoreManager {
     public void deleteFood(String FoodId) {
         DocumentReference documentReference = collectionReference.document(FoodId);
         documentReference.delete();
+    }
+
+    //find food by ID
+    public interface GetFoodByIdCallback {
+        void onCallback(Food food);
+    }
+
+    public void getFoodById(String id, final FoodFirestoreManager.GetFoodByIdCallback callback){
+        Task<QuerySnapshot> doc = collectionReference.whereEqualTo("foodId", id).get();
+        doc.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot querySnapshot) {
+                List<Food> return_drinks = querySnapshot.toObjects(Food.class);
+                Food return_food = return_drinks.get(0);
+                callback.onCallback(return_food);
+            }
+        });
     }
 }

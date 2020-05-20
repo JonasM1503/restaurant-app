@@ -22,6 +22,9 @@
     <string name="headline_table_detail">Tischübersicht</string>
     <string name="text_tableQR">QR-Code</string>
     <string name="dialog_delete_table">Den Tisch wirklich löschen?</string>
+    <string name="headline_food_list">Speisenverwaltung</string>
+    <string name="headline_food_detail">Speisenübersicht</string>
+    <string name="dialog_delete_food">Die Speise wirklich löschen?</string>
 
     <!--    Userverwaltung    -->
     <string name="button_login">Login</string>

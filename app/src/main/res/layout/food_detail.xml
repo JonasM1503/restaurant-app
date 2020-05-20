@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    >
+
+    <TextView
+        android:id="@+id/headlineFoodDetailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/headline_food_detail"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/foodUpdateSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="92dp"
+        android:text="@string/button_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpdatePicture" />
+
+    <EditText
+        android:id="@+id/foodUpdatePicture"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="21dp"
+        android:ems="10"
+        android:inputType="textPostalAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpdateDescription" />
+
+    <EditText
+        android:id="@+id/foodUpdateName"
+        android:layout_width="151dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="80dp"
+        android:autoSizeTextType="none"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headlineFoodDetailText" />
+
+    <TextView
+        android:id="@+id/foodPictureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="201dp"
+        android:layout_marginEnd="103dp"
+        android:text="@string/text_drinkpicture"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/foodUpdatePicture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodDescriptionLabel" />
+
+    <Button
+        android:id="@+id/foodUpdateDeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="64dp"
+        android:text="@string/button_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foodUpdateSaveButton"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpdatePicture" />
+
+    <TextView
+        android:id="@+id/foodnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="68dp"
+        android:text="@string/text_drinkname"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/foodUpdateName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/foodDescriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="62dp"
+        android:text="@string/text_drinkdescription"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/drinkUpdateDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodPriceLabel" />
+
+    <TextView
+        android:id="@+id/foodPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="130dp"
+        android:text="@string/text_drinkprice"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/foodUpdatePrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodnameLabel" />
+
+    <EditText
+        android:id="@+id/foodUpdatePrice"
+        android:layout_width="148dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="83dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpdateName" />
+
+    <TextView
+        android:id="@+id/foodUpdateDescription"
+        android:layout_width="220dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpdatePrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
