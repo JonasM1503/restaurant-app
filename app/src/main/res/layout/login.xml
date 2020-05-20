@@ -11,12 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="163dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="196dp"
         android:text="@string/text_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 
     <EditText
         android:id="@+id/loginEmail"
@@ -39,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
+        android:layout_marginTop="37dp"
         android:layout_marginEnd="99dp"
         android:layout_marginBottom="48dp"
         android:ems="10"
@@ -46,5 +49,6 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/loginButtonFinish"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
 </androidx.constraintlayout.widget.ConstraintLayout>
