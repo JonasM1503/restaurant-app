@@ -7,10 +7,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.List;
 
 /**
  *
@@ -65,12 +64,11 @@ public class FoodFirestoreManager {
     }
 
     public void getFoodById(String id, final FoodFirestoreManager.GetFoodByIdCallback callback){
-        Task<QuerySnapshot> doc = collectionReference.whereEqualTo("foodId", id).get();
-        doc.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        Task<DocumentSnapshot> doc = collectionReference.document(id).get();
+        doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot querySnapshot) {
-                List<Food> return_drinks = querySnapshot.toObjects(Food.class);
-                Food return_food = return_drinks.get(0);
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Food return_food = documentSnapshot.toObject(Food.class);
                 callback.onCallback(return_food);
             }
         });

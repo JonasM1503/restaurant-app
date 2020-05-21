@@ -7,10 +7,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.List;
 
 /**
  *
@@ -63,12 +62,11 @@ public class TableFirestoreManager {
     }
 
     public void getTableById(String id, final TableFirestoreManager.GetTableByIdCallback callback){
-        Task<QuerySnapshot> doc = collectionReference.whereEqualTo("tableId", id).get();
-        doc.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        Task<DocumentSnapshot> doc = collectionReference.document(id).get();
+        doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot querySnapshot) {
-                List<Table> return_tables = querySnapshot.toObjects(Table.class);
-                Table return_table = return_tables.get(0);
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Table return_table = documentSnapshot.toObject(Table.class);
                 callback.onCallback(return_table);
             }
         });

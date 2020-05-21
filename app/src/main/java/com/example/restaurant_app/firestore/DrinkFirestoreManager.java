@@ -8,10 +8,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.List;
 
 /**
  *
@@ -63,12 +62,11 @@ public class DrinkFirestoreManager {
     }
 
     public void getDrinkById(String id, final DrinkFirestoreManager.GetDrinkByIdCallback callback){
-        Task<QuerySnapshot> doc = collectionReference.whereEqualTo("drinkId", id).get();
-        doc.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        Task<DocumentSnapshot> doc = collectionReference.document(id).get();
+        doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot querySnapshot) {
-                List<Drink> return_drinks = querySnapshot.toObjects(Drink.class);
-                Drink return_drink = return_drinks.get(0);
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Drink return_drink = documentSnapshot.toObject(Drink.class);
                 callback.onCallback(return_drink);
             }
         });
