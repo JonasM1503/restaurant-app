@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *
- * @author Jonas Mitschke
+ * @author Simon Rothmann
  * @content adapter for food data to listview-item
  */
 public class FoodListAdapter extends ArrayAdapter<Food> {

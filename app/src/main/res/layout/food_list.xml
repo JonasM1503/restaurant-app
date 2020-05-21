@@ -8,10 +8,10 @@
 
     <ListView
         android:id="@+id/foodList"
-        android:layout_width="412dp"
-        android:layout_height="728dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="413dp"
+        android:layout_height="577dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodHeadingText" />
 
@@ -25,4 +25,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/newFoodButton"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="62dp"
+        android:text="@string/button_addNewFood"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodList" />
 </androidx.constraintlayout.widget.ConstraintLayout>

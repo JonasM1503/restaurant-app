@@ -29,6 +29,14 @@ public class Food {
         this.description = description;
         this.pictureURL = pictureURL;
     }
+    public Food(Restaurant restaurant, String name, Double price, String description,
+                String pictureURL) {
+        this.restaurant = restaurant;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.pictureURL = pictureURL;
+    }
 
 // getters
     public String getFoodId() {

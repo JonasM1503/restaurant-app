@@ -25,6 +25,8 @@
     <string name="headline_food_list">Speisenverwaltung</string>
     <string name="headline_food_detail">Speisenübersicht</string>
     <string name="dialog_delete_food">Die Speise wirklich löschen?</string>
+    <string name="button_addNewFood">Neue Speise anlegen</string>
+
 
     <!--    Userverwaltung    -->
     <string name="button_login">Login</string>

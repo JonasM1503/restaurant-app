@@ -134,7 +134,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodUpdateName" />
 
-    <TextView
+    <EditText
         android:id="@+id/foodUpdateDescription"
         android:layout_width="220dp"
         android:layout_height="200dp"
