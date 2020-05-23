@@ -11,6 +11,7 @@
     <string name="view_tables_button">Tischverwaltung</string>
 
     <!--    Verwaltungen    -->
+    <string name="button_goToOverview">Zurück zur Übersicht</string>
     <string name="headline_drink_list">Getränkeverwaltung</string>
     <string name="headline_drink_detail">Getränkeübersicht</string>
     <string name="text_drinkname">Bezeichnung</string>

@@ -21,18 +21,28 @@
         android:id="@+id/tableList"
         android:layout_width="409dp"
         android:layout_height="600dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableHeadingText" />
+        app:layout_constraintTop_toBottomOf="@+id/goToOverviewButton" />
 
     <Button
         android:id="@+id/newTableButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/button_addNewTable"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/goToOverviewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/button_goToOverview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableHeadingText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
