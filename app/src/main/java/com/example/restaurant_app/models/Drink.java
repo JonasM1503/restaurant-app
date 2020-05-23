@@ -17,6 +17,8 @@ public class Drink {
     private String pictureUrl;
 
     //constructor
+    public Drink(){}
+
     public Drink(Restaurant restaurantId, Category category, String name, Double price,
                  String description, String pictureUrl) {
         this.restaurant = restaurantId;

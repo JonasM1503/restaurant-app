@@ -117,12 +117,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drinkUpdateName" />
 
-    <TextView
+    <EditText
         android:id="@+id/drinkUpdateDescription"
         android:layout_width="220dp"
         android:layout_height="200dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drinkUpdatePrice" />
 
