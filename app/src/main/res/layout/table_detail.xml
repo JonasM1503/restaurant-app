@@ -27,19 +27,17 @@
         android:layout_marginTop="50dp"
         android:text="@string/button_save"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableUpdateQR" />
-
-    <EditText
-        android:id="@+id/tableUpdateQR"
-        android:layout_width="151dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="25dp"
-        android:autoSizeTextType="none"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableUpdateNo" />
+
+    <Button
+        android:id="@+id/tableUpdateGenQRButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/button_generateQRCode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableNoLabel2" />
 
     <Button
         android:id="@+id/tableUpdateDeleteButton"
@@ -49,7 +47,7 @@
         android:layout_marginEnd="80dp"
         android:text="@string/button_delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableUpdateQR" />
+        app:layout_constraintTop_toBottomOf="@+id/tableUpdateNo" />
 
     <TextView
         android:id="@+id/tableNoLabel"
@@ -63,15 +61,17 @@
         app:layout_constraintTop_toBottomOf="@+id/headlineTableDetailText" />
 
     <TextView
-        android:id="@+id/tableQRLabel2"
-        android:layout_width="wrap_content"
+        android:id="@+id/tableNoLabel2"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/text_tableQR"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/text_generateQRCodeAgain"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableUpdateNo" />
+        app:layout_constraintTop_toBottomOf="@+id/tableUpdateSaveButton" />
 
     <EditText
         android:id="@+id/tableUpdateNo"

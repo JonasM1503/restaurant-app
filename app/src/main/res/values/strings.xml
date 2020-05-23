@@ -21,10 +21,13 @@
     <string name="dialog_delete_drink">Den Account wirklich löschen?</string>
     <string name="button_addNewDrink">Neues Getränk anlegen</string>
     <string name="headline_table_list">Tischverwaltung</string>
+    <string name="text_generateQRCodeAgain">Sie können den QR-Code für diesen Tisch nochmals generieren (dieser ändert sich dabei nicht)</string>
+    <string name="toast_genQR">Der QR-Code wurde nochmals erstellt</string>
     <string name="headline_table_detail">Tischübersicht</string>
     <string name="text_tableNo">Tischnummer</string>
     <string name="text_tableQR">QR-Code</string>
     <string name="dialog_delete_table">Den Tisch wirklich löschen?</string>
+    <string name="button_generateQRCode">QR-Code nochmals generieren</string>
     <string name="button_addNewTable">Neuen Tisch anlegen</string>
     <string name="headline_food_list">Speisenverwaltung</string>
     <string name="headline_food_detail">Speisenübersicht</string>

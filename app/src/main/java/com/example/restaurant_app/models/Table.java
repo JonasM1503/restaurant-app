@@ -12,15 +12,13 @@ public class Table {
     private String tableId;
     private Restaurant restaurant;
     private Integer tableNumber;
-    private String qrCode;
 
 // constructors
     public Table() {}
 
-    public Table(Restaurant restaurant, Integer tableNumber, String qrCode) {
+    public Table(Restaurant restaurant, Integer tableNumber) {
         this.restaurant = restaurant;
         this.tableNumber = tableNumber;
-        this.qrCode = qrCode;
     }
 
 // getters
@@ -36,20 +34,12 @@ public class Table {
         return tableNumber;
     }
 
-    public String getQrCode() {
-        return qrCode;
-    }
-
 // setters
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
 
-    public void setTableId(String tableId) {
-        this.tableId = tableId;
-    }
-
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
+    public void setTableNumber(Integer no) {
+        this.tableNumber = no;
     }
 }
