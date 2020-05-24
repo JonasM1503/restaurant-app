@@ -58,38 +58,12 @@ public class RegistrationActivity extends AppCompatActivity {
                     toast.show();
                 }
                 else {
-                    Address address = new Address(street, zipCode, city, "Germany");
+                    Address address =  new Address(street, zipCode, city, "Germany");
                     Restaurant restaurant = new Restaurant(restaurantName, address, ustId);
+                    User user = new User(email, User.hashPassword(password), firstName, lastName, address, false, restaurant);
 
-                    final String[] restaurantId = new String[1];
-                    final String[] addressId = new String[1];
-                    resManager.createRestaurant(restaurant, new RestaurantFirestoreManager.CreateRestaurantCallback() {
-                        @Override
-                        public void onCallback(String RestaurantId) {
-                            restaurantId[0] = RestaurantId;
-                        }
-                    });
-                    addressManager.createAddress(address, new AddressFirestoreManager.CreateAddressCallback() {
-                        @Override
-                        public void onCallback(String AdressId) {
-                            addressId[0] = AdressId;
-                        }
-                    });
-                    final Restaurant[] restaurantWithId = new Restaurant[1];
-                    resManager.getRestaurantById(restaurantId[0], new RestaurantFirestoreManager.GetRestaurantByIdCallback() {
-                        @Override
-                        public void onCallback(Restaurant restaurant) {
-                            restaurantWithId[0] = restaurant;
-                        }
-                    });
-                    final Address[] addressWithId = new Address[1];
-                    addressManager.getAddressById(addressId[0], new AddressFirestoreManager.GetAddressByIdCallback() {
-                        @Override
-                        public void onCallback(Address address) {
-                            addressWithId[0] = address;
-                        }
-                    });
-                    User user = new User(email, User.hashPassword(password), firstName, lastName, addressWithId[0], false, restaurantWithId[0]);
+                    resManager.createRestaurant(restaurant);
+                    addressManager.createAddress(address);
                     userManager.createUser(user);
                     Intent intent = new Intent(v.getContext(), MainActivity.class);
                     v.getContext().startActivity(intent);

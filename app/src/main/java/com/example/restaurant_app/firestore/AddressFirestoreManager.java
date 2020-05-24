@@ -33,16 +33,8 @@ public class AddressFirestoreManager {
     }
 
 // CRUD operations
-    public interface CreateAddressCallback{
-        void onCallback(String AdressId);
-    }
-    public void createAddress(Address address, final AddressFirestoreManager.CreateAddressCallback callback) {
-        collectionReference.add(address).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                callback.onCallback(documentReference.getId());
-            }
-        });
+    public void createAddress(Address address) {
+        collectionReference.add(address);
     }
 
     public void getAllAddresses(OnCompleteListener<QuerySnapshot> onCompleteListener)

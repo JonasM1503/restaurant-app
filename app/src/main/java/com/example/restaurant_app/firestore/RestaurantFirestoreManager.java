@@ -36,18 +36,9 @@ public class RestaurantFirestoreManager {
     }
 
 // CRUD operations
-    public interface CreateRestaurantCallback{
-        void onCallback(String RestaurantId);
+    public void createRestaurant(Restaurant restaurant) {
+        collectionReference.add(restaurant);
     }
-    public void createRestaurant(Restaurant restaurant, final RestaurantFirestoreManager.CreateRestaurantCallback callback) {
-        collectionReference.add(restaurant).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                callback.onCallback(documentReference.getId());
-            }
-        });
-    }
-
     public void getAllRestaurants(OnCompleteListener<QuerySnapshot> onCompleteListener)
     {
         collectionReference.get().addOnCompleteListener(onCompleteListener);
