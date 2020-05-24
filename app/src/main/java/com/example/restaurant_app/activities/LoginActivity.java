@@ -3,6 +3,7 @@ package com.example.restaurant_app.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,10 +16,11 @@ import com.example.restaurant_app.firestore.UserFirestoreManager;
 import com.example.restaurant_app.models.User;
 import com.google.gson.Gson;
 
+
 /**
  *
  * @author Simon Rothmann
- * @content registration prozess
+ * @content registration process
  */
 public class LoginActivity extends AppCompatActivity {
     private UserFirestoreManager userManager;
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                             toast.show();
                         }
                         else {
+                            Log.i("Test", user.getRestaurant().getRestaurantId());
                             Gson gson = new Gson();
                             String user_json = gson.toJson(user);
                             Context context = getBaseContext();

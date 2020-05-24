@@ -24,6 +24,13 @@ public class Restaurant {
         this.address = address;
         this.taxNumber = taxNumber;
     }
+    public Restaurant(String restaurantId, String restaurantName, Address address, String taxNumber)
+    {
+        this.restaurantId = restaurantId;
+        this.restaurantName = restaurantName;
+        this.address = address;
+        this.taxNumber = taxNumber;
+    }
 
     //getter
     public String getRestaurantId() { return restaurantId; }

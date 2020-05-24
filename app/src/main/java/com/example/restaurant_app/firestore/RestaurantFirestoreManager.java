@@ -1,10 +1,15 @@
 package com.example.restaurant_app.firestore;
 
+import androidx.annotation.NonNull;
+
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 /**
@@ -31,8 +36,16 @@ public class RestaurantFirestoreManager {
     }
 
 // CRUD operations
-    public void createRestaurant(Restaurant restaurant) {
-        collectionReference.add(restaurant);
+    public interface CreateRestaurantCallback{
+        void onCallback(String RestaurantId);
+    }
+    public void createRestaurant(Restaurant restaurant, final RestaurantFirestoreManager.CreateRestaurantCallback callback) {
+        collectionReference.add(restaurant).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                callback.onCallback(documentReference.getId());
+            }
+        });
     }
 
     public void getAllRestaurants(OnCompleteListener<QuerySnapshot> onCompleteListener)
@@ -49,5 +62,17 @@ public class RestaurantFirestoreManager {
     public void deleteRestaurant(String restaurantId) {
         DocumentReference documentReference = collectionReference.document(restaurantId);
         documentReference.delete();
+    }
+
+    public interface GetRestaurantByIdCallback{
+        void onCallback(Restaurant restaurant);
+    }
+    public void getRestaurantById(String restaurantId, final RestaurantFirestoreManager.GetRestaurantByIdCallback callback){
+        collectionReference.document(restaurantId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                callback.onCallback(documentSnapshot.toObject(Restaurant.class));
+            }
+        });
     }
 }

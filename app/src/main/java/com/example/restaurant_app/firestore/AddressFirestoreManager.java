@@ -3,8 +3,10 @@ package com.example.restaurant_app.firestore;
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Address;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 /**
@@ -31,8 +33,16 @@ public class AddressFirestoreManager {
     }
 
 // CRUD operations
-    public void createAddress(Address address) {
-        collectionReference.add(address);
+    public interface CreateAddressCallback{
+        void onCallback(String AdressId);
+    }
+    public void createAddress(Address address, final AddressFirestoreManager.CreateAddressCallback callback) {
+        collectionReference.add(address).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                callback.onCallback(documentReference.getId());
+            }
+        });
     }
 
     public void getAllAddresses(OnCompleteListener<QuerySnapshot> onCompleteListener)
@@ -49,5 +59,18 @@ public class AddressFirestoreManager {
     public void deleteAddress(String addressId) {
         DocumentReference documentReference = collectionReference.document(addressId);
         documentReference.delete();
+    }
+
+    public interface GetAddressByIdCallback{
+        void onCallback(Address address);
+    }
+
+    public void getAddressById(String addressId, final AddressFirestoreManager.GetAddressByIdCallback callback){
+        collectionReference.document(addressId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                callback.onCallback(documentSnapshot.toObject(Address.class));
+            }
+        });
     }
 }

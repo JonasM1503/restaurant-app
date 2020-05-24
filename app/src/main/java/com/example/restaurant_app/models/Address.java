@@ -25,6 +25,14 @@ public class Address {
         this.addressCity = addressCity;
         this.addressCountry = addressCountry;
     }
+    public Address(String addressId, String addressStreet, String addressZipCode,
+                   String addressCity, String addressCountry) {
+        this.addressId = addressId;
+        this.addressStreet = addressStreet;
+        this.addressZipCode = addressZipCode;
+        this.addressCity = addressCity;
+        this.addressCountry = addressCountry;
+    }
 
     //getter
     public String getAddressId() { return addressId; }
