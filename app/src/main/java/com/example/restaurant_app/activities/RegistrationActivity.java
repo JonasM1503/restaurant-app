@@ -15,6 +15,7 @@ import com.example.restaurant_app.firestore.UserFirestoreManager;
 import com.example.restaurant_app.models.Address;
 import com.example.restaurant_app.models.Restaurant;
 import com.example.restaurant_app.models.User;
+
 /**
  *
  * @author Simon Rothmann
@@ -25,6 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private RestaurantFirestoreManager resManager;
     private UserFirestoreManager userManager;
     private AddressFirestoreManager addressManager;
+    public static String testID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +61,17 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 else {
                     Address address =  new Address(street, zipCode, city, "Germany");
-                    Restaurant restaurant = new Restaurant(restaurantName, address, ustId);
-                    User user = new User(email, User.hashPassword(password), firstName, lastName, address, false, restaurant);
-
-                    resManager.createRestaurant(restaurant);
                     addressManager.createAddress(address);
+
+                    Restaurant restaurant = new Restaurant(restaurantName, address, ustId);
+                    resManager.createRestaurant(restaurant);
+
+                    User user = new User(email, User.hashPassword(password), firstName, lastName, address, false, restaurant);
                     userManager.createUser(user);
+
                     Intent intent = new Intent(v.getContext(), MainActivity.class);
                     v.getContext().startActivity(intent);
                 }
-
             }
         });
     }

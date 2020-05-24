@@ -1,12 +1,9 @@
 package com.example.restaurant_app.firestore;
 
-import androidx.annotation.NonNull;
-
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -37,7 +34,7 @@ public class RestaurantFirestoreManager {
 
 // CRUD operations
     public void createRestaurant(Restaurant restaurant) {
-        collectionReference.add(restaurant);
+        collectionReference.document(restaurant.getRestaurantId()).set(restaurant);
     }
     public void getAllRestaurants(OnCompleteListener<QuerySnapshot> onCompleteListener)
     {

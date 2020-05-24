@@ -34,7 +34,7 @@ public class AddressFirestoreManager {
 
 // CRUD operations
     public void createAddress(Address address) {
-        collectionReference.add(address);
+        collectionReference.document(address.getAddressId()).set(address);
     }
 
     public void getAllAddresses(OnCompleteListener<QuerySnapshot> onCompleteListener)

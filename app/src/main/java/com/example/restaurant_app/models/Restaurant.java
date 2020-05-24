@@ -1,6 +1,6 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+import java.util.UUID;
 
 /**
  *
@@ -8,27 +8,26 @@ import com.google.firebase.firestore.DocumentId;
  * @content definition of restaurant-class
  */
 public class Restaurant {
-    @DocumentId
     private String restaurantId;
     private String restaurantName;
     private Address address;
     private String taxNumber;
 
-    //constructor
+//constructors
     public Restaurant(){
     }
 
     public Restaurant(String restaurantName, Address address, String taxNumber)
     {
+        this.restaurantId = UUID.randomUUID().toString();
         this.restaurantName = restaurantName;
         this.address = address;
         this.taxNumber = taxNumber;
     }
 
 
-    //getter
+//getter
     public String getRestaurantId() { return restaurantId; }
-    
 
     public String getRestaurantName() { return restaurantName; }
 
@@ -36,7 +35,10 @@ public class Restaurant {
 
     public String getTaxNumber() {  return taxNumber; }
 
-    //setter
+//setter
+    public void setRestaurantId(String restaurantId){
+        this.restaurantId = restaurantId;
+    }
 
     public void setRestaurantName(String restaurantName) { this.restaurantName = restaurantName; }
 

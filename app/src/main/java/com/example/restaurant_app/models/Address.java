@@ -1,25 +1,26 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+import java.util.UUID;
+
 /**
  *
  * @author Simon Rothmann
  * @content definition of address-class
  */
 public class Address {
-    @DocumentId
     private String addressId;
     private String addressStreet;
     private String addressZipCode;
     private String addressCity;
     private String addressCountry;
 
-    //constructor
+//constructors
     public Address() {
     }
 
     public Address(String addressStreet, String addressZipCode,
                    String addressCity, String addressCountry) {
+        this.addressId = UUID.randomUUID().toString();
         this.addressStreet = addressStreet;
         this.addressZipCode = addressZipCode;
         this.addressCity = addressCity;
@@ -27,7 +28,7 @@ public class Address {
     }
 
 
-    //getter
+//getter
     public String getAddressId() { return addressId; }
 
     public String getAddressStreet() { return addressStreet; }
@@ -38,7 +39,9 @@ public class Address {
 
     public String getAddressCountry() { return addressCountry; }
 
-    //setter
+//setter
+    public void setAddressId(String addressId) { this.addressId = addressId; }
+
     public void setAddressStreet(String addressStreet) { this.addressStreet = addressStreet; }
 
     public void setAddressZipCode(String addressZipCode) { this.addressZipCode = addressZipCode; }
