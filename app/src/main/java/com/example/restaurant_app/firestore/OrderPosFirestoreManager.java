@@ -33,8 +33,9 @@ public class OrderPosFirestoreManager {
     }
 
 // CRUD operations
-    public void createOrderPos(OrderPos order) {
-        collectionReference.add(order);
+    public void createOrderPos(OrderPos orderPos) {
+
+        collectionReference.document(orderPos.getOrderPosId()).set(orderPos);
     }
 
     public void getAllOrderPos(OnCompleteListener<QuerySnapshot> onCompleteListener)

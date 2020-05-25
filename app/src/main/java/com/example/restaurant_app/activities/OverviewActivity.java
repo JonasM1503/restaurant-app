@@ -79,5 +79,16 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
+
+        final Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = getBaseContext();
+                SharedPreferencesAdapter.setDefaults("currentUser", null, context);
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 }

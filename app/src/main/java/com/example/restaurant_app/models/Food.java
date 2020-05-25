@@ -1,6 +1,6 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+import java.util.UUID;
 
 /**
  *
@@ -8,10 +8,9 @@ import com.google.firebase.firestore.DocumentId;
  * @content definition of food-class
  */
 public class Food {
-    @DocumentId
     private String foodId;
-    private Restaurant restaurant;
-    private Category category;
+    private String restaurantId;
+    private String categoryId;
     private String name;
     private Double price;
     private String description;
@@ -20,10 +19,11 @@ public class Food {
 // constructors
     public Food() {}
 
-    public Food(Restaurant restaurant, Category category, String name, Double price, String description,
+    public Food(String restaurantId, String categoryId, String name, Double price, String description,
                 String pictureURL) {
-        this.restaurant = restaurant;
-        this.category = category;
+        this.foodId = UUID.randomUUID().toString();
+        this.restaurantId = restaurantId;
+        this.categoryId = categoryId;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -35,12 +35,12 @@ public class Food {
         return foodId;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getRestaurantId() {
+        return restaurantId;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
     public String getName() {
@@ -60,12 +60,12 @@ public class Food {
     }
 
 // setters
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public void setName(String name) {

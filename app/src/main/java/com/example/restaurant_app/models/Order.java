@@ -1,6 +1,6 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+import java.util.UUID;
 
 /**
  *
@@ -8,48 +8,40 @@ import com.google.firebase.firestore.DocumentId;
  * @content definition of order-class
  */
 public class Order {
-    @DocumentId
     private String orderId;
-    private Restaurant restaurant;
-    private Table table;
+    private String tableId;
     private Boolean paid;
 
 // constructors
     public Order() {}
 
-    public Order(Restaurant restaurant, Table table, Boolean paid) {
-        this.restaurant = restaurant;
-        this.table = table;
+    public Order( String tableId, Boolean paid) {
+        this.orderId = UUID.randomUUID().toString();
+        this.tableId = tableId;
         this.paid = paid;
+
     }
 
 // getters
     public String getOrderId() {
-        return orderId;
+        return this.orderId;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getTable() {
+        return this.tableId;
     }
 
-    public Table getTable() {
-        return table;
-    }
+    public Boolean getPaid() { return this.paid; }
 
-    public Boolean getPaid() {
-        return paid;
-    }
 
 // setters
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
 
-    public void setTable(Table table) {
-        this.table = table;
+    public void setTableId(String tableId) {
+        this.tableId = tableId;
     }
 
     public void setPaid(Boolean paid) {
         this.paid = paid;
     }
+
 }

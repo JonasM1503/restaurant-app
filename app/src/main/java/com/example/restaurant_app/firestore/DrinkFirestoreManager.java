@@ -37,7 +37,7 @@ public class DrinkFirestoreManager {
 
 // CRUD operations
     public void createDrink(Drink drink) {
-        collectionReference.add(drink);
+        collectionReference.document(drink.getDrinkId()).set(drink);
     }
 
     public void getAllDrinks(OnCompleteListener<QuerySnapshot> onCompleteListener)

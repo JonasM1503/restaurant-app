@@ -1,6 +1,8 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+
+
+import java.util.UUID;
 
 /**
  *
@@ -8,16 +10,16 @@ import com.google.firebase.firestore.DocumentId;
  * @content definition of table-class
  */
 public class Table {
-    @DocumentId
     private String tableId;
-    private Restaurant restaurant;
+    private String restaurantId;
     private Integer tableNumber;
 
 // constructors
     public Table() {}
 
-    public Table(Restaurant restaurant, Integer tableNumber) {
-        this.restaurant = restaurant;
+    public Table(String restaurantId, Integer tableNumber) {
+        this.tableId = UUID.randomUUID().toString();
+        this.restaurantId = restaurantId;
         this.tableNumber = tableNumber;
     }
 
@@ -26,8 +28,8 @@ public class Table {
         return tableId;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getRestaurantId() {
+        return restaurantId;
     }
 
     public Integer getTableNumber() {
@@ -35,8 +37,8 @@ public class Table {
     }
 
 // setters
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public void setTableNumber(Integer no) {

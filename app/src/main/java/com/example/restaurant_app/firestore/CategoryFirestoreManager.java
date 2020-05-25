@@ -36,7 +36,8 @@ public class CategoryFirestoreManager {
 
     // CRUD operations
     public void createCategory(Category category) {
-        collectionReference.add(category);
+
+        collectionReference.document(category.getCategoryId()).set(category);
     }
 
     public void getAllCategories(OnCompleteListener<QuerySnapshot> onCompleteListener)

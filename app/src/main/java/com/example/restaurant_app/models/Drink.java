@@ -1,16 +1,17 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+import java.util.UUID;
+
 /**
  *
  * @author Simon Rothmann
  * @content definition of drink-class
  */
 public class Drink {
-    @DocumentId
+
     private String drinkId;
-    private Restaurant restaurant;
-    private Category category;
+    private String restaurantId;
+    private String categoryId;
     private String name;
     private Double price;
     private String description;
@@ -19,10 +20,11 @@ public class Drink {
     //constructor
     public Drink(){}
 
-    public Drink(Restaurant restaurantId, Category category, String name, Double price,
+    public Drink(String restaurantId, String categoryId, String name, Double price,
                  String description, String pictureUrl) {
-        this.restaurant = restaurantId;
-        this.category = category;
+        this.drinkId = UUID.randomUUID().toString();
+        this.restaurantId = restaurantId;
+        this.categoryId = categoryId;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -32,10 +34,10 @@ public class Drink {
     //getter
     public String getDrinkId() { return drinkId; }
 
-    public Restaurant getRestaurant() { return restaurant; }
+    public String getRestaurantId() { return restaurantId; }
 
-    public Category getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
     public String getName() { return name; }
@@ -47,10 +49,10 @@ public class Drink {
     public String getPictureUrl() { return pictureUrl; }
 
     //setter
-    public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
+    public void setRestaurantId(String restaurantId) { this.restaurantId = restaurantId; }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public void setName(String name) { this.name = name; }

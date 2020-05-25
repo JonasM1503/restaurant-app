@@ -34,7 +34,7 @@ public class OrderFirestoreManager {
 
 // CRUD operations
     public void createOrder(Order order) {
-        collectionReference.add(order);
+        collectionReference.document(order.getOrderId()).set(order);
     }
 
     public void getAllOrders(OnCompleteListener<QuerySnapshot> onCompleteListener)

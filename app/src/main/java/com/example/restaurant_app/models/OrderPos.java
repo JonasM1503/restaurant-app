@@ -1,66 +1,57 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+import java.util.UUID;
 
 /**
  *
  * @author Jonas Mitschke
- * @content definition of orderPos-class
+ * @content definition of orderIdPos-class
  */
 public class OrderPos {
-    @DocumentId
     private String orderPosId;
-    private Order order;
-    private Food food;
-    private Drink drink;
+    private String orderId;
+    private String foodId;
+    private String drinkId;
 
 
 // constructors
     public OrderPos() {}
 
-    public OrderPos(Order order, Food food) {
-        this.order = order;
-        this.food = food;
+    public OrderPos(String orderId, Food food) {
+        this.orderPosId = UUID.randomUUID().toString();
+        this.orderId = orderId;
+        this.foodId = food.getFoodId();
     }
 
-    public OrderPos(Order order, Drink drink) {
-        this.order = order;
-        this.drink = drink;
+    public OrderPos(String orderId, Drink drink) {
+        this.orderPosId = UUID.randomUUID().toString();
+        this.orderId = orderId;
+        this.drinkId = drink.getDrinkId();
     }
 
 // getters
-    public String getOrderPosId() {
-        return orderPosId;
-    }
+    public String getOrderPosId() { return this.orderPosId; }
 
-    public Order getOrder() {
-        return order;
-    }
+    public String getOrderId() { return this.orderId; }
 
-    public Food getFood() {
-        return food;
-    }
+    public String getFoodId() { return this.foodId; }
 
-    public Drink getDrink() {
-        return drink;
-    }
+    public String getDrinkId() { return this.drinkId; }
 
 // setters
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderId(String orderId) { this.orderId = orderId; }
+
+    public void setFoodId(String foodId) {
+        if (this.drinkId != null) {
+            this.drinkId = null;
+        }
+        this.foodId = foodId;
     }
 
-    public void setFood(Food food) {
-        if (this.drink != null) {
-            this.drink = null;
+    public void setDrinkId(String drinkId) {
+        if (this.foodId != null) {
+            this.foodId = null;
         }
-        this.food = food;
-    }
-
-    public void setDrink(Drink drink) {
-        if (this.food != null) {
-            this.food = null;
-        }
-        this.drink = drink;
+        this.drinkId = drinkId;
     }
 }

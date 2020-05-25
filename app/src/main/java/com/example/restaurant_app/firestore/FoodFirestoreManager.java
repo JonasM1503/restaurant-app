@@ -39,7 +39,7 @@ public class FoodFirestoreManager {
 
 // CRUD operations
     public void createFood(Food food) {
-        collectionReference.add(food);
+        collectionReference.document(food.getFoodId()).set(food);
     }
 
     public void getAllFoods(OnCompleteListener<QuerySnapshot> onCompleteListener)

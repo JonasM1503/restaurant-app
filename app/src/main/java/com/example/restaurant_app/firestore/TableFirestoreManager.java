@@ -36,17 +36,9 @@ public class TableFirestoreManager {
     }
 
 // CRUD operations
-    public interface CreateTableCallback {
-        void onCallback(String tableID);
-    }
 
-    public void createTable(Table table, final TableFirestoreManager.CreateTableCallback callback) {
-        collectionReference.add(table).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                callback.onCallback(documentReference.getId().toString());
-            }
-        });
+    public void createTable(Table table) {
+        collectionReference.document(table.getTableId()).set(table);
     }
 
     public void getAllTables(OnCompleteListener<QuerySnapshot> onCompleteListener)
