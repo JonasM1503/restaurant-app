@@ -49,6 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                             Toast toast = Toast.makeText(getApplicationContext(), "Falsches Password", Toast.LENGTH_LONG);
                             toast.show();
                         }
+                        else if(!user.getIsActive()){
+                            Toast toast = Toast.makeText(
+                                    getApplicationContext(),
+                                    "Benutzer ist nicht aktiviert, bitte an Administrator wenden",
+                                    Toast.LENGTH_LONG);
+                            toast.show();
+                        }
                         else {
                             Log.i("Test", user.getRestaurant().getRestaurantId());
                             Gson gson = new Gson();
