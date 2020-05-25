@@ -12,13 +12,26 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
+/**
+ *
+ * @author Jonas Mitschke
+ * @content class for QR-Code generation & saving
+ */
 public class GenerateQRCode {
 
-    public static void generateCode(Context context, String text, String picName){
+/**
+ *
+ * @author   Jonas Mitschke
+ * @content  generate QR-Code
+ * @param    context    plain text password, which needs to be encrypted
+ * @param    text       the text, which will be contained in the qr-code
+ * @param    picName    name of the qr-code-file
+ * @return   generation & saving worked or not
+ */
+    public static boolean generateCode(Context context, String text, String picName){
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.encodeBitmap(text, BarcodeFormat.QR_CODE, 500, 500);
-
 
             String path = Environment.getExternalStorageDirectory().toString();
             File file = new File(path, picName + ".jpg");
@@ -29,9 +42,10 @@ public class GenerateQRCode {
             fOut.close();
 
             MediaStore.Images.Media.insertImage(context.getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+            return true;
         } catch(Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
-
 }

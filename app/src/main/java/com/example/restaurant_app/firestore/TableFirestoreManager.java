@@ -57,11 +57,22 @@ public class TableFirestoreManager {
         documentReference.delete();
     }
 
-// find table by ID
+/**
+*
+* @author   Jonas Mitschke
+* @content  interface to work with returned table from firestore
+*/
     public interface GetTableByIdCallback {
         void onCallback(Table table);
     }
 
+/**
+*
+* @author   Jonas Mitschke
+* @content  get table from firestore by id
+* @param    id          id of the table to be find
+* @param    callback    GetTableByIdCallback-interface
+*/
     public void getTableById(String id, final TableFirestoreManager.GetTableByIdCallback callback){
         Task<DocumentSnapshot> doc = collectionReference.document(id).get();
         doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

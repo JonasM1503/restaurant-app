@@ -1,7 +1,5 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,7 +19,7 @@ public class User {
     private Restaurant restaurant;
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
-    //constructor
+//constructors
     public User() {
     }
 
@@ -40,8 +38,7 @@ public class User {
         this.password = password;
     }
 
-    //getter
-
+//getters
     public String getEmail() { return email; }
 
     public String getPassword() { return password; }
@@ -50,12 +47,11 @@ public class User {
 
     public String getLastName() { return lastName; }
 
-
     public Boolean getIsActive() { return isActive;  }
 
     public Restaurant getRestaurant() { return restaurant; }
 
-    //setter
+//setter
     public void setEmail(String email) { this.email = email; }
 
     public void setPassword(String password) { this.password = password; }
@@ -64,17 +60,27 @@ public class User {
 
     public void setLastName(String lastName) { this.lastName = lastName; }
 
-
     public void setIsActive(Boolean isActive) { this.isActive = isActive; }
 
     public void setRestaurant(Restaurant restaurant) { this.restaurant = restaurant; }
 
-    // check if user is admin
+
+/**
+*
+* @author   Jonas Mitschke
+* @content  check if user is a admin
+*/
     public boolean isAdmin(){
         return this.getRestaurant() == null;
     }
 
-    // hash password
+/**
+*
+* @author   Jonas Mitschke
+* @content  encrypt password
+* @param    password   plain text password, which needs to be encrypted
+* @return   encrypted password
+*/
     public static String hashPassword(String password) {
         byte[] hash;
 

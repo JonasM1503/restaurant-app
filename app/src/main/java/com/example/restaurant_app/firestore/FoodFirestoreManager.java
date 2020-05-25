@@ -58,11 +58,22 @@ public class FoodFirestoreManager {
         documentReference.delete();
     }
 
-    //find food by ID
+/**
+*
+* @author   Jonas Mitschke
+* @content  interface to work with returned food from firestore
+*/
     public interface GetFoodByIdCallback {
         void onCallback(Food food);
     }
 
+/**
+*
+* @author   Jonas Mitschke
+* @content  get food from firestore by id
+* @param    id          id of the food to be find
+* @param    callback    GetFoodByIdCallback-interface
+*/
     public void getFoodById(String id, final FoodFirestoreManager.GetFoodByIdCallback callback){
         Task<DocumentSnapshot> doc = collectionReference.document(id).get();
         doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
