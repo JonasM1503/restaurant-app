@@ -22,6 +22,7 @@
     <string name="button_addNewDrink">Neues Getränk anlegen</string>
     <string name="headline_table_list">Tischverwaltung</string>
     <string name="text_generateQRCodeAgain">Sie können den QR-Code für diesen Tisch nochmals generieren (dieser ändert sich dabei nicht)</string>
+    <string name="toast_genQR_fail">Fehler bei der Erstellung des QR-Codes</string>
     <string name="toast_genQR">Der QR-Code wurde nochmals erstellt</string>
     <string name="headline_table_detail">Tischübersicht</string>
     <string name="text_tableNo">Tischnummer</string>
