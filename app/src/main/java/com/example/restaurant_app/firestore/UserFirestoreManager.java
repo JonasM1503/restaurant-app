@@ -1,6 +1,10 @@
 package com.example.restaurant_app.firestore;
 
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -13,6 +17,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /**
  *
@@ -75,3 +81,4 @@ public class UserFirestoreManager {
     }
 
 }
+

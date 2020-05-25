@@ -42,7 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 final String firstName = ((TextView) findViewById(R.id.registerFirstName)).getText().toString();
                 final String lastName = ((TextView) findViewById(R.id.registerLastName)).getText().toString();
                 final String email = ((TextView) findViewById(R.id.registerEmail)).getText().toString();
@@ -64,11 +64,24 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     Restaurant restaurant = new Restaurant(restaurantName, address, ustId);
 
-                    User user = new User(email, User.hashPassword(password), firstName, lastName, false, restaurant);
-                    userManager.createUser(user);
-
-                    Intent intent = new Intent(v.getContext(), MainActivity.class);
-                    v.getContext().startActivity(intent);
+                    final User newUser = new User(email, User.hashPassword(password), firstName, lastName, false, restaurant);
+                        userManager.getUserByEmail(email, new UserFirestoreManager.GetUserByEmailCallback() {
+                            @Override
+                            public void onCallback(User user) {
+                                if(user == null){
+                                    userManager.createUser(newUser);
+                                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                                    v.getContext().startActivity(intent);
+                                }
+                                else {
+                                    Toast toast = Toast.makeText(
+                                            getApplicationContext(),
+                                            "Benutzer bereits vorhanden, bitte mit neuer Email Probieren",
+                                            Toast.LENGTH_LONG);
+                                    toast.show();
+                                }
+                            }
+                        });
                 }
             }
         });
