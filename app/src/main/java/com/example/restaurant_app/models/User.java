@@ -17,7 +17,6 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private Address address;
     private Boolean isActive;
     private Restaurant restaurant;
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
@@ -27,12 +26,11 @@ public class User {
     }
 
     public User(String email, String password, String firstName, String lastName,
-                Address address, Boolean isActive, Restaurant restaurant) {
+                Boolean isActive, Restaurant restaurant) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
         this.isActive = isActive;
         this.restaurant = restaurant;
     }
@@ -52,7 +50,6 @@ public class User {
 
     public String getLastName() { return lastName; }
 
-    public Address getAddress() { return address; }
 
     public Boolean getIsActive() { return isActive;  }
 
@@ -67,7 +64,6 @@ public class User {
 
     public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public void setAddress(Address address) { this.address = address; }
 
     public void setIsActive(Boolean isActive) { this.isActive = isActive; }
 

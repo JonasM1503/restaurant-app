@@ -36,9 +36,7 @@ public class Restaurant {
     public String getTaxNumber() {  return taxNumber; }
 
 //setter
-    public void setRestaurantId(String restaurantId){
-        this.restaurantId = restaurantId;
-    }
+    public void setRestaurantId(String restaurantId){ this.restaurantId = restaurantId; }
 
     public void setRestaurantName(String restaurantName) { this.restaurantName = restaurantName; }
 

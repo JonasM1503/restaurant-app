@@ -61,12 +61,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 else {
                     Address address =  new Address(street, zipCode, city, "Germany");
-                    addressManager.createAddress(address);
 
                     Restaurant restaurant = new Restaurant(restaurantName, address, ustId);
-                    resManager.createRestaurant(restaurant);
 
-                    User user = new User(email, User.hashPassword(password), firstName, lastName, address, false, restaurant);
+                    User user = new User(email, User.hashPassword(password), firstName, lastName, false, restaurant);
                     userManager.createUser(user);
 
                     Intent intent = new Intent(v.getContext(), MainActivity.class);
