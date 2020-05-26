@@ -54,6 +54,14 @@ public class OverviewActivity extends AppCompatActivity {
             }
         });
 
+        final Button viewCategoriesButton = findViewById(R.id.viewCategoryButton);
+        viewCategoriesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CategoryListActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
         final Button viewDrinksButton = findViewById(R.id.viewDrinkButton);
         viewDrinksButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

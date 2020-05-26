@@ -6,19 +6,25 @@
     <string name="view_users_button">Userverwaltung</string>
     <string name="view_user_profile_button">Profil bearbeiten</string>
     <string name="change_PW_button">Passwort ändern</string>
+    <string name="view_categories_button">Kategorieverwaltung</string>
     <string name="view_drinks_button">Getränkeverwaltung</string>
     <string name="view_foods_button">Essensverwaltung</string>
     <string name="view_tables_button">Tischverwaltung</string>
 
     <!--    Verwaltungen    -->
     <string name="button_goToOverview">Zurück zur Übersicht</string>
+    <string name="headline_category_list">Kategorieverwaltung</string>
+    <string name="headline_category_detail">Kategorieübersicht</string>
+    <string name="text_categoryname">Bezeichnung</string>
+    <string name="dialog_delete_category">Die Kategorie wirklich löschen?</string>
+    <string name="button_addNewCategory">Neue Kategorie anlegen</string>
     <string name="headline_drink_list">Getränkeverwaltung</string>
     <string name="headline_drink_detail">Getränkeübersicht</string>
     <string name="text_drinkname">Bezeichnung</string>
     <string name="text_drinkprice">Preis</string>
     <string name="text_drinkdescription">Beschreibung</string>
     <string name="text_drinkpicture">Bild-URL</string>
-    <string name="dialog_delete_drink">Den Account wirklich löschen?</string>
+    <string name="dialog_delete_drink">Das Getränk wirklich löschen?</string>
     <string name="button_addNewDrink">Neues Getränk anlegen</string>
     <string name="headline_table_list">Tischverwaltung</string>
     <string name="text_generateQRCodeAgain">Sie können den QR-Code für diesen Tisch nochmals generieren (dieser ändert sich dabei nicht)</string>

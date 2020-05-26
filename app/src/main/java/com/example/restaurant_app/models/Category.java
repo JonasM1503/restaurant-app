@@ -1,6 +1,6 @@
 package com.example.restaurant_app.models;
 
-import com.google.firebase.firestore.DocumentId;
+import java.util.UUID;
 
 /**
  *
@@ -8,16 +8,16 @@ import com.google.firebase.firestore.DocumentId;
  * @content definition of category-class
  */
 public class Category {
-    @DocumentId
     private String categoryId;
-    private Restaurant restaurant;
+    private String restaurantId;
     private String name;
 
 // constructors
     public Category() {}
 
-    public Category(Restaurant restaurant, String name) {
-        this.restaurant = restaurant;
+    public Category(String restaurantId, String name) {
+        this.categoryId = UUID.randomUUID().toString();
+        this.restaurantId = restaurantId;
         this.name = name;
     }
 
@@ -26,8 +26,8 @@ public class Category {
         return categoryId;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getRestaurantId() {
+        return restaurantId;
     }
 
     public String getName() {
@@ -35,8 +35,12 @@ public class Category {
     }
 
 // setters
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public void setName(String name) {

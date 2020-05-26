@@ -3,8 +3,11 @@ package com.example.restaurant_app.firestore;
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Category;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -54,5 +57,32 @@ public class CategoryFirestoreManager {
     public void deleteCategory(String CategoryId) {
         DocumentReference documentReference = collectionReference.document(CategoryId);
         documentReference.delete();
+    }
+
+/**
+*
+* @author   Jonas Mitschke
+* @content  interface to work with returned category from firestore
+*/
+    public interface GetCategoryByIdCallback {
+        void onCallback(Category category);
+    }
+
+/**
+*
+* @author   Jonas Mitschke
+* @content  get category from firestore by id
+* @param    id          id of the category to be find
+* @param    callback    GetCategoryByIdCallback-interface
+*/
+    public void getCategoryById(String id, final CategoryFirestoreManager.GetCategoryByIdCallback callback){
+        Task<DocumentSnapshot> doc = collectionReference.document(id).get();
+        doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Category return_category = documentSnapshot.toObject(Category.class);
+                callback.onCallback(return_category);
+            }
+        });
     }
 }
