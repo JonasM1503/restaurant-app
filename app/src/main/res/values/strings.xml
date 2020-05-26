@@ -21,6 +21,7 @@
     <string name="headline_drink_list">Getränkeverwaltung</string>
     <string name="headline_drink_detail">Getränkeübersicht</string>
     <string name="text_drinkname">Bezeichnung</string>
+    <string name="text_drinkcategory">Kategorie</string>
     <string name="text_drinkprice">Preis</string>
     <string name="text_drinkdescription">Beschreibung</string>
     <string name="text_drinkpicture">Bild-URL</string>
@@ -38,6 +39,7 @@
     <string name="button_addNewTable">Neuen Tisch anlegen</string>
     <string name="headline_food_list">Speisenverwaltung</string>
     <string name="headline_food_detail">Speisenübersicht</string>
+    <string name="text_foodcategory">Kategorie</string>
     <string name="dialog_delete_food">Die Speise wirklich löschen?</string>
     <string name="button_addNewFood">Neue Speise anlegen</string>
     <string name="button_logout">Ausloggen</string>
