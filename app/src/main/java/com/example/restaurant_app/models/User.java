@@ -68,9 +68,9 @@ public class User {
 /**
 *
 * @author   Jonas Mitschke
-* @content  check if user is a admin
+* @content  check whether user is a admin
 */
-    public boolean isAdmin(){
+    public boolean checkWhetherAdmin(){
         return this.getRestaurant() == null;
     }
 

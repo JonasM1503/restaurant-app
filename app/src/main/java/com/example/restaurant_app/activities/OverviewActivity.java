@@ -28,14 +28,14 @@ public class OverviewActivity extends AppCompatActivity {
         final User curUser = gson.fromJson(SharedPreferencesAdapter.getDefaults("currentUser",context), User.class);
 
         final Button viewUsersButton = findViewById(R.id.viewUserButton);
-        if (curUser.isAdmin()){
+        if (curUser.checkWhetherAdmin()){
             ((Button) findViewById(R.id.viewUserButton)).setText(getResources().getString(R.string.view_users_button));
         } else {
             ((Button) findViewById(R.id.viewUserButton)).setText(getResources().getString(R.string.view_user_profile_button));
         }
         viewUsersButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (curUser.isAdmin()){
+                if (curUser.checkWhetherAdmin()){
                     Intent intent = new Intent(v.getContext(), UserListActivity.class);
                     v.getContext().startActivity(intent);
                 } else {
