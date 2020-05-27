@@ -3,7 +3,6 @@ package com.example.restaurant_app.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,10 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
         userManager = UserFirestoreManager.newInstance();
 
-
         final Button loginFinishButton = findViewById(R.id.loginButtonFinish);
-
-
         loginFinishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -46,23 +42,21 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onCallback(User user) {
                         if(user.getPassword().compareTo(hashedPassword) != 0){
-                            Toast toast = Toast.makeText(getApplicationContext(), "Falsches Password", Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Benutzername oder Passwort falsch", Toast.LENGTH_LONG);
                             toast.show();
                         }
                         else if(!user.getIsActive()){
                             Toast toast = Toast.makeText(
                                     getApplicationContext(),
-                                    "Benutzer ist nicht aktiviert, bitte an Administrator wenden",
+                                    "Benutzer ist nicht aktiv, bitte den Administrator kontaktieren",
                                     Toast.LENGTH_LONG);
                             toast.show();
                         }
                         else {
-                            Log.i("Test", user.getRestaurant().getRestaurantId());
                             Gson gson = new Gson();
                             String user_json = gson.toJson(user);
                             Context context = getBaseContext();
                             SharedPreferencesAdapter.setDefaults("currentUser", user_json, context);
-                            //hier weiterleitung auf übersichtsseite.
                             Intent intent = new Intent(v.getContext(), OverviewActivity.class);
                             v.getContext().startActivity(intent);
                         }

@@ -5,6 +5,11 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.3"
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.example.restaurant_app.activities"
         minSdkVersion 27
@@ -24,6 +29,10 @@ android {
 
 }
 
+repositories {
+    jcenter()
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -37,7 +46,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
-}
-repositories {
-    jcenter()
+    implementation 'com.google.zxing:core:3.3.0'
 }

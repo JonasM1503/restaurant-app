@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">restaurant-app</string>
 
+    <!--    Frontend-Start    -->
+    <string name="message_scan">Bitte scannen Sie einen QR-Code</string>
+    <string name="headline_menu">Speisekarte</string>
+
+
     <!--    Verwaltungsübersicht    -->
     <string name="headline_overview">Verwaltung</string>
     <string name="view_users_button">Userverwaltung</string>
