@@ -1,5 +1,7 @@
 package com.example.restaurant_app.firestore;
 
+import androidx.annotation.NonNull;
+
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Table;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -82,6 +84,37 @@ public class TableFirestoreManager {
                 callback.onCallback(return_table);
             }
         });
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  interface to work with returned tables from firestore
+     */
+    public interface GetExampleTableCallback {
+        void onCallback(Table table);
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  get example table from firestore
+     * @param    callback    GetExampleTableCallback-interface
+     */
+    public void getExampleTable(final TableFirestoreManager.GetExampleTableCallback callback){
+        collectionReference.limit(1).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            Table table = null;
+                            for(DocumentSnapshot document : task.getResult()) {
+                                table = document.toObject(Table.class);
+                            }
+                            callback.onCallback(table);
+                        }
+                    }
+                });
     }
 }
 

@@ -2,6 +2,8 @@
     <string name="app_name">restaurant-app</string>
 
     <!--    Frontend-Start    -->
+    <string name="button_scanCode">QR-Code scannen</string>
+    <string name="button_exampleTableLogin">Anmeldung mit Beispieltisch</string>
     <string name="message_scan">Bitte scannen Sie einen QR-Code</string>
     <string name="headline_menu">Speisekarte</string>
 

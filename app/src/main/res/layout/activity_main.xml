@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnScan"
+        android:id="@+id/ScanCodeButton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="100dp"
@@ -38,14 +38,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/tv_qr_readTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/ExampleTableLoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:text="@string/button_exampleTableLogin"
+        android:textAllCaps="false"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnScan" />
+        app:layout_constraintTop_toBottomOf="@+id/ScanCodeButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
