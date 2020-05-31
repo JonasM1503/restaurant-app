@@ -43,24 +43,11 @@
         android:id="@+id/foodUpdateSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="5dp"
         android:text="@string/button_save"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodUpdatePicture" />
-
-    <EditText
-        android:id="@+id/foodUpdatePicture"
-        android:layout_width="210dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="21dp"
-        android:ems="10"
-        android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodUpdateDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/foodPicture" />
 
     <EditText
         android:id="@+id/foodUpdateName"
@@ -90,12 +77,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="64dp"
         android:text="@string/button_delete"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/foodUpdateSaveButton"
-        app:layout_constraintTop_toBottomOf="@+id/foodUpdatePicture" />
+        app:layout_constraintTop_toBottomOf="@+id/foodPicture" />
 
     <TextView
         android:id="@+id/foodnameLabel"
@@ -145,11 +133,22 @@
 
     <EditText
         android:id="@+id/foodUpdateDescription"
-        android:layout_width="220dp"
-        android:layout_height="200dp"
+        android:layout_width="209dp"
+        android:layout_height="152dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodUpdatePrice" />
+
+    <ImageView
+        android:id="@+id/foodPicture"
+        android:layout_width="210dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foodPictureLabel"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpdateDescription"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

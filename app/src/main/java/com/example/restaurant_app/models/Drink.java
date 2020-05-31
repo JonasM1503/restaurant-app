@@ -1,5 +1,10 @@
 package com.example.restaurant_app.models;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
+import java.io.ByteArrayOutputStream;
 import java.util.UUID;
 
 /**
@@ -15,20 +20,20 @@ public class Drink {
     private String name;
     private Double price;
     private String description;
-    private String pictureUrl;
+    private String picture;
 
     //constructor
     public Drink(){}
 
     public Drink(String restaurantId, String categoryId, String name, Double price,
-                 String description, String pictureUrl) {
+                 String description, String picture) {
         this.drinkId = UUID.randomUUID().toString();
         this.restaurantId = restaurantId;
         this.categoryId = categoryId;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.pictureUrl = pictureUrl;
+        this.picture = picture;
     }
 
     //getter
@@ -46,7 +51,7 @@ public class Drink {
 
     public String getDescription() { return description; }
 
-    public String getPictureUrl() { return pictureUrl; }
+    public String getPicture() { return picture; }
 
     //setter
     public void setRestaurantId(String restaurantId) { this.restaurantId = restaurantId; }
@@ -61,6 +66,24 @@ public class Drink {
 
     public void setDescription(String description) { this.description = description; }
 
-    public void setPictureUrl(String pictureUrl) { this.pictureUrl = pictureUrl; }
+    public void setPicture(String picture) { this.picture = picture; }
+    
+    public String pictureToString(Bitmap picture) {
+        ByteArrayOutputStream baos = new  ByteArrayOutputStream();
+        picture.compress(Bitmap.CompressFormat.PNG,100, baos);
+        byte [] b=baos.toByteArray();
+        String pictureString = Base64.encodeToString(b, Base64.DEFAULT);
+        return pictureString;
+    }
+    public Bitmap StringToPicture(String picture) {
+        try {
+            byte [] encodeByte=Base64.decode(picture,Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch(Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
 }
 
