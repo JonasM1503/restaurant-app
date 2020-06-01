@@ -27,6 +27,9 @@ public class OverviewActivity extends AppCompatActivity {
         Context context = getBaseContext();
         final User curUser = gson.fromJson(SharedPreferencesAdapter.getDefaults("currentUser",context), User.class);
 
+        /**
+         * switch to user management overview
+         */
         final Button viewUsersButton = findViewById(R.id.viewUserButton);
         if (curUser.checkWhetherAdmin()){
             ((Button) findViewById(R.id.viewUserButton)).setText(getResources().getString(R.string.view_users_button));
@@ -45,7 +48,9 @@ public class OverviewActivity extends AppCompatActivity {
                 }
             }
         });
-
+        /**
+         * switch to change password view
+         */
         final Button updatePWButton = findViewById(R.id.updatePWButton);
         updatePWButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -53,7 +58,9 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
-
+        /**
+         * switch to categories overview
+         */
         final Button viewCategoriesButton = findViewById(R.id.viewCategoryButton);
         viewCategoriesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -61,7 +68,9 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
-
+        /**
+         * switch to drinks overview
+         */
         final Button viewDrinksButton = findViewById(R.id.viewDrinkButton);
         viewDrinksButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -69,8 +78,9 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
-
-
+        /**
+         * switch to food overview
+         */
         final Button viewFoodsButton = findViewById(R.id.viewFoodButton);
         viewFoodsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -78,8 +88,9 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
-
-
+        /**
+         * switch to tables overview
+         */
         final Button viewTablesButton = findViewById(R.id.viewTableButton);
         viewTablesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -87,7 +98,9 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
-
+        /**
+         * logout of app
+         */
         final Button logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,6 +31,9 @@ public class LoginActivity extends AppCompatActivity {
 
         userManager = UserFirestoreManager.newInstance();
 
+        /**
+         * login function, checking password and email to firebase
+         */
         final Button loginFinishButton = findViewById(R.id.loginButtonFinish);
         loginFinishButton.setOnClickListener(new View.OnClickListener() {
             @Override

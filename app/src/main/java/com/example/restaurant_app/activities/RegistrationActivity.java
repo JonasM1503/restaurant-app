@@ -26,7 +26,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private RestaurantFirestoreManager resManager;
     private UserFirestoreManager userManager;
     private AddressFirestoreManager addressManager;
-    public static String testID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,27 +86,40 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private static String checkError(String firstName, String lastName, String email,
-                                     String password, String street, String zipCode,
-                                     String city, String restaurantName, String ustId){
+    /**
+     * Method checking for errors in user input while registration.
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param password
+     * @param street
+     * @param zipCode
+     * @param city
+     * @param restaurantName
+     * @param ustId
+     * @return errormessage
+     */
+    private String checkError(String firstName, String lastName, String email,
+                              String password, String street, String zipCode,
+                              String city, String restaurantName, String ustId){
         if(email.equals(""))
-            return "Email darf nicht leer sein";
+            return getString(R.string.email_empty);
         if (password.equals(""))
-            return "Passwort darf nicht leer sein";
+            return getString(R.string.password_empty);
         if (firstName.equals(""))
-            return "Vorname darf nicht leer sein";
+            return getString(R.string.firstName_empty);
         if (lastName.equals(""))
-            return "Nachname darf nicht leer sein";
+            return getString(R.string.lastName_empty);
         if (street.equals(""))
-            return "Straße darf nicht leer sein";
+            return getString(R.string.street_empty);
         if (zipCode.equals(""))
-            return "PLZ darf nicht leer sein";
+            return getString(R.string.zipCode_empty);
         if (city.equals(""))
-            return "Stadt darf nicht leer sein";
+            return getString(R.string.city_empty);
         if (restaurantName.equals(""))
-            return "Restaurantname darf nicht leer sein";
+            return getString(R.string.restaurantName_empty);
         if (ustId.equals(""))
-            return "UstId darf nicht leer sein";
+            return getString(R.string.ustId_empty);
         return "";
     }
 }

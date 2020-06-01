@@ -83,4 +83,16 @@
     <string name="text_password">Passwort</string>
     <string name="text_street_number">Straße, Hausnummer</string>
     <string name="text_login">Login</string>
+
+    <!--    Errormessages    -->
+    <string name="email_empty">Email darf nicht leer sein</string>
+    <string name="password_empty">Passwort darf nicht leer sein</string>
+    <string name="firstName_empty">Vorname darf nicht leer sein</string>
+    <string name="lastName_empty">Nachname darf nicht leer sein</string>
+    <string name="street_empty">Straße darf nicht leer sein</string>
+    <string name="zipCode_empty">PLZ darf nicht leer sein</string>
+    <string name="city_empty">Stadt darf nicht leer sein</string>
+    <string name="restaurantName_empty">Restaurantname darf nicht leer sein</string>
+    <string name="ustId_empty">UstId darf nicht leer sein</string>
+
 </resources>
