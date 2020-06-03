@@ -94,5 +94,6 @@
     <string name="city_empty">Stadt darf nicht leer sein</string>
     <string name="restaurantName_empty">Restaurantname darf nicht leer sein</string>
     <string name="ustId_empty">UstId darf nicht leer sein</string>
+    <string name="pictureEmpty">Bild darf nicht leer sein</string>
 
 </resources>

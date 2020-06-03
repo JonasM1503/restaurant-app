@@ -20,20 +20,20 @@ public class Food {
     private String name;
     private Double price;
     private String description;
-    private String picture;
+    private String pictureUrl;
 
 // constructors
     public Food() {}
 
     public Food(String restaurantId, String categoryId, String name, Double price, String description,
-                String picture) {
+                String pictureUrl) {
         this.foodId = UUID.randomUUID().toString();
         this.restaurantId = restaurantId;
         this.categoryId = categoryId;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.picture = picture;
+        this.pictureUrl = pictureUrl;
     }
 
 // getters
@@ -61,8 +61,8 @@ public class Food {
         return description;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getPictureUrl() {
+        return pictureUrl;
     }
 
 // setters
@@ -86,27 +86,10 @@ public class Food {
         this.description = description;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 
-    public String pictureToString(Bitmap picture) {
-        ByteArrayOutputStream baos = new  ByteArrayOutputStream();
-        picture.compress(Bitmap.CompressFormat.PNG,100, baos);
-        byte [] b=baos.toByteArray();
-        String pictureString = Base64.encodeToString(b, Base64.DEFAULT);
-        return pictureString;
-    }
-    public Bitmap StringToPicture(String picture) {
-        try {
-            byte [] encodeByte=Base64.decode(picture,Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch(Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
 
 }
 
