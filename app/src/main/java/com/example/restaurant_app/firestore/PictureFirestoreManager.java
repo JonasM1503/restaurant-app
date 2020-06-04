@@ -2,24 +2,20 @@ package com.example.restaurant_app.firestore;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Path;
-import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.restaurant_app.activities.R;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.UUID;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class PictureFirestoreManager {
     private static FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -34,46 +30,66 @@ public class PictureFirestoreManager {
         return pictureFirestoreManager;
     }
 
-    public static String uploadImage(Bitmap picture){
+    public String uploadImage(Bitmap picture){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         picture.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        String path = "restaurantImages/" + UUID.randomUUID() + ".png";
-        storageRef = storage.getReference(path);
+        String[] path = {"restaurantImages/" + UUID.randomUUID() + ".png"};
+        storageRef = storage.getReference(path[0]);
         UploadTask uploadTask = storageRef.putBytes(data);
-
-        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
-            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                if (!task.isSuccessful()) {
-                    throw task.getException();
-                }
-
-                // Continue with the task to get the download URL
-                return storageRef.getDownloadUrl();
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Log.i(TAG, "onSuccess: uploaded file");
             }
-        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if (task.isSuccessful()) {
-                    Uri downloadUri = task.getResult();
-                } else {
-
-                }
+            public void onFailure(@NonNull Exception exception) {
+                path[0] = null;
+                Log.e(TAG, "onFailure: did not upload file. Error: " + exception);
             }
         });
-        return path;
+        return path[0];
     }
 
-    public static void updateImage(String url, Bitmap picture){
+    public boolean updateImage(String url, Bitmap picture){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         picture.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
+        Boolean[] success = new Boolean[1];
         storageRef = storage.getReference(url);
         UploadTask uploadTask = storageRef.putBytes(data);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                success[0] = true;
+                Log.i(TAG, "onSuccess: updated file");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                success[0] = false;
+                Log.e(TAG, "onFailure: did not update file. Error: " + exception);
+            }
+        });
+        return success[0];
+    }
 
+    public void deleteImage(String url){
+        storageRef = storage.getReference(url);
+        storageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.i(TAG, "onSuccess: deleted file");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e(TAG, "onFailure: did not delete file with URL: " + url);
+            }
+        });
     }
 
     public interface DownloadCallback {

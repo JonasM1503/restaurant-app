@@ -47,6 +47,8 @@
     <string name="headline_food_list">Speisenverwaltung</string>
     <string name="headline_food_detail">Speisenübersicht</string>
     <string name="text_foodcategory">Kategorie</string>
+    <string name="toast_no_picture_set">Bitte wählen Sie ein Bild aus</string>
+    <string name="toast_error_picture_upload">Ein Fehler beim Bild-Upload ist aufgetreten</string>
     <string name="dialog_delete_food">Die Speise wirklich löschen?</string>
     <string name="button_addNewFood">Neue Speise anlegen</string>
     <string name="button_logout">Ausloggen</string>

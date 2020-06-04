@@ -48,6 +48,7 @@ public class OverviewActivity extends AppCompatActivity {
                 }
             }
         });
+
         /**
          * switch to change password view
          */
@@ -58,6 +59,7 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
+
         /**
          * switch to categories overview
          */
@@ -68,6 +70,7 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
+
         /**
          * switch to drinks overview
          */
@@ -78,6 +81,7 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
+
         /**
          * switch to food overview
          */
@@ -88,6 +92,7 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
+
         /**
          * switch to tables overview
          */
@@ -98,6 +103,7 @@ public class OverviewActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
+
         /**
          * logout of app
          */
