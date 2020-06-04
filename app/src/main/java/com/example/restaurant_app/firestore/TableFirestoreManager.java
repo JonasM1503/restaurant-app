@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Table;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -66,6 +67,7 @@ public class TableFirestoreManager {
      */
     public interface GetTableByIdCallback {
         void onCallback(Table table);
+        void onFailureCallback(Exception e);
     }
 
     /**
@@ -80,8 +82,17 @@ public class TableFirestoreManager {
         doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Table return_table = documentSnapshot.toObject(Table.class);
-                callback.onCallback(return_table);
+                if (documentSnapshot.exists()) {
+                    Table return_table = documentSnapshot.toObject(Table.class);
+                    callback.onCallback(return_table);
+                } else {
+                    callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
             }
         });
     }

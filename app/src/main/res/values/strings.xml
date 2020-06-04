@@ -49,6 +49,7 @@
     <string name="text_foodcategory">Kategorie</string>
     <string name="toast_no_picture_set">Bitte wählen Sie ein Bild aus</string>
     <string name="toast_error_picture_upload">Ein Fehler beim Bild-Upload ist aufgetreten</string>
+    <string name="toast_error_no_valid_qrcode">Ungültiger QR-Code</string>
     <string name="dialog_delete_food">Die Speise wirklich löschen?</string>
     <string name="button_addNewFood">Neue Speise anlegen</string>
     <string name="button_logout">Ausloggen</string>
