@@ -49,11 +49,11 @@ public class MenuActivity extends AppCompatActivity {
         Context context = getBaseContext();
         final String tableID = SharedPreferencesAdapter.getDefaults("currentTable", context);
         tableFirestoreManager = TableFirestoreManager.newInstance();
-        final Table[] table1 = new Table[1];
+        final Table[] table = new Table[1];
         tableFirestoreManager.getTableById(tableID, new TableFirestoreManager.GetTableByIdCallback() {
             @Override
-            public void onCallback(Table table) {
-                table1[0] = table;
+            public void onCallback(Table tableCallback) {
+                table[0] = tableCallback;
             }
 
             @Override
@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseFirestore.getInstance().collection(CollectionNames.foodCollection)
-                        .whereEqualTo("restaurantId", table1[0].getRestaurantId()).get()
+                        .whereEqualTo("restaurantId", table[0].getRestaurantId()).get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -91,7 +91,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseFirestore.getInstance().collection(CollectionNames.drinkCollection)
-                        .whereEqualTo("restaurantId", table1[0].getRestaurantId()).get()
+                        .whereEqualTo("restaurantId", table[0].getRestaurantId()).get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
