@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/itemMenuPicture"
+        android:layout_width="85dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/itemMenuName"
+        android:layout_width="121dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="46dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/itemMenuPicture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemMenuPrice"
+        android:layout_width="69dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="79dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itemMenuName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/menuItemGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="itemMenuName,itemMenuPrice,itemMenuPicture" />
+</androidx.constraintlayout.widget.ConstraintLayout>

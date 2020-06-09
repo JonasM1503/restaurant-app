@@ -1,5 +1,12 @@
 package com.example.restaurant_app.firestore;
 
+import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+
+import com.example.restaurant_app.activities.FoodListActivity;
+import com.example.restaurant_app.activities.R;
+import com.example.restaurant_app.adapters.FoodListAdapter;
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Food;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -9,7 +16,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -84,4 +95,6 @@ public class FoodFirestoreManager {
             }
         });
     }
+
+
 }

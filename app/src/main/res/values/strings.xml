@@ -99,4 +99,7 @@
     <string name="ustId_empty">UstId darf nicht leer sein</string>
     <string name="pictureEmpty">Bild darf nicht leer sein</string>
 
+    <!--  Speisekarte -->
+    <string name="tab_food">Speisen</string>
+    <string name="tab_drinks">Getränke</string>
 </resources>
