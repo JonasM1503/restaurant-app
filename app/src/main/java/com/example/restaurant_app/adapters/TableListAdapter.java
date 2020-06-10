@@ -31,7 +31,7 @@ public class TableListAdapter extends ArrayAdapter<Table> {
             convertView =  ((Activity)getContext()).getLayoutInflater().inflate(R.layout.item_tables,parent,false);
         }
 
-        TextView nameTextView = convertView.findViewById(R.id.table_id);
+        TextView nameTextView = convertView.findViewById(R.id.table_number);
         Button viewTableButton = convertView.findViewById(R.id.viewTableButton);
 
         final Table table = getItem(position);
@@ -44,7 +44,7 @@ public class TableListAdapter extends ArrayAdapter<Table> {
             }
         });
 
-        nameTextView.setText(table.getTableId());
+        nameTextView.setText(table.getTableNumber());
 
         return convertView;
     }
