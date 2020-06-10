@@ -140,6 +140,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodUpdatePrice" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="197dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/placeholderPicture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodUpdateDescription" />
+
     <ImageView
         android:id="@+id/foodPicture"
         android:layout_width="210dp"

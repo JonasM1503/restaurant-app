@@ -53,6 +53,7 @@
     <string name="dialog_delete_food">Die Speise wirklich löschen?</string>
     <string name="button_addNewFood">Neue Speise anlegen</string>
     <string name="button_logout">Ausloggen</string>
+    <string name="placeholderPicture">Hier klicken um Bild auszuwählen</string>
 
 
     <!--    Userverwaltung    -->
