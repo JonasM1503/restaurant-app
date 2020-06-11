@@ -44,7 +44,7 @@ public class TableListAdapter extends ArrayAdapter<Table> {
             }
         });
 
-        nameTextView.setText(table.getTableNumber());
+        nameTextView.setText(table.getTableNumber().toString());
 
         return convertView;
     }
