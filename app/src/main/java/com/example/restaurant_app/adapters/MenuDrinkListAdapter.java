@@ -10,9 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.Group;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.restaurant_app.activities.FoodDetailActivity;
+import com.example.restaurant_app.activities.DrinkDetailActivity;
 import com.example.restaurant_app.activities.R;
 import com.example.restaurant_app.firestore.PictureFirestoreManager;
 import com.example.restaurant_app.models.Drink;
@@ -35,14 +35,15 @@ public class MenuDrinkListAdapter extends ArrayAdapter<Drink> {
         ImageView imageView = convertView.findViewById(R.id.itemMenuPicture);
         TextView nameTextView = convertView.findViewById(R.id.itemMenuName);
         TextView priceTextView = convertView.findViewById(R.id.itemMenuPrice);
-        Group viewFoodGroup = convertView.findViewById(R.id.menuItemGroup);
 
         final Drink drink = getItem(position);
 
-        viewFoodGroup.setOnClickListener(new View.OnClickListener() {
+        ConstraintLayout itemMenuGroupLayout = convertView.findViewById(R.id.itemMenuGroup);
+
+        itemMenuGroupLayout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), FoodDetailActivity.class);
-                intent.putExtra("drinkId", drink.getDrinkId());
+                Intent intent = new Intent(v.getContext(), DrinkDetailActivity.class);
+                intent.putExtra("drinkID", drink.getDrinkId());
                 v.getContext().startActivity(intent);
             }
         });

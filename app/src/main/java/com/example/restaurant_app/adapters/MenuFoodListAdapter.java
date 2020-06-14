@@ -7,11 +7,10 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.Group;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.restaurant_app.activities.FoodDetailActivity;
 import com.example.restaurant_app.activities.R;
@@ -40,11 +39,12 @@ public class MenuFoodListAdapter extends ArrayAdapter<Food>{
         ImageView imageView = convertView.findViewById(R.id.itemMenuPicture);
         TextView nameTextView = convertView.findViewById(R.id.itemMenuName);
         TextView priceTextView = convertView.findViewById(R.id.itemMenuPrice);
-        Group viewFoodGroup = convertView.findViewById(R.id.menuItemGroup);
+
+        ConstraintLayout itemMenuGroupLayout = convertView.findViewById(R.id.itemMenuGroup);
 
         final Food food = getItem(position);
 
-        viewFoodGroup.setOnClickListener(new View.OnClickListener() {
+        itemMenuGroupLayout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), FoodDetailActivity.class);
                 intent.putExtra("foodID", food.getFoodId());
