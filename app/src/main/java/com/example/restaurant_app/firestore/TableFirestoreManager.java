@@ -104,6 +104,7 @@ public class TableFirestoreManager {
      */
     public interface GetExampleTableCallback {
         void onCallback(Table table);
+        void onFailureCallback(Exception e);
     }
 
     /**
@@ -114,18 +115,25 @@ public class TableFirestoreManager {
      */
     public void getExampleTable(final TableFirestoreManager.GetExampleTableCallback callback){
         collectionReference.limit(1).get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            Table table = null;
-                            for(DocumentSnapshot document : task.getResult()) {
-                                table = document.toObject(Table.class);
-                            }
-                            callback.onCallback(table);
-                        }
+            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot querySnapshot) {
+                Table table = null;
+                for(DocumentSnapshot document : querySnapshot.getDocuments()) {
+                    if (document.exists()) {
+                        table = document.toObject(Table.class);
+                        callback.onCallback(table);
+                    } else {
+                        callback.onFailureCallback(new Exception(new ClassNotFoundException()));
                     }
-                });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
+            }
+        });
     }
 }
 

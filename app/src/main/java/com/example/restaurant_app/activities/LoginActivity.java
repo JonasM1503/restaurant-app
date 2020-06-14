@@ -1,5 +1,6 @@
 package com.example.restaurant_app.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import com.google.gson.Gson;
 
 /**
  *
- * @author Simon Rothmann
+ * @author Simon Rothmann, Jonas Mitschke
  * @content registration process
  */
 public class LoginActivity extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        final Activity this_activity = this;
         userManager = UserFirestoreManager.newInstance();
 
         /**
@@ -64,10 +66,16 @@ public class LoginActivity extends AppCompatActivity {
                             v.getContext().startActivity(intent);
                         }
                     }
-                });
 
+                    @Override
+                    public void onFailureCallback(Exception e) {
+                        Intent intent = new Intent(this_activity, DrinkListActivity.class);
+                        this_activity.startActivity(intent);
+                        Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.toast_error), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
         }
     });
-
 }
 }

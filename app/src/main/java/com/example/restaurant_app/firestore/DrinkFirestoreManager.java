@@ -1,9 +1,12 @@
 package com.example.restaurant_app.firestore;
 
 
+import androidx.annotation.NonNull;
+
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Drink;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -14,7 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 /**
  *
- * @author Simon Rothmann
+ * @author Simon Rothmann, Jonas Mitschke
  * @content handler for CRUD-operations to firestore
  */
 public class DrinkFirestoreManager {
@@ -59,6 +62,7 @@ public class DrinkFirestoreManager {
 // find drink by ID
     public interface GetDrinkByIdCallback {
         void onCallback(Drink drink);
+        void onFailureCallback(Exception e);
     }
 
     public void getDrinkById(String id, final DrinkFirestoreManager.GetDrinkByIdCallback callback){
@@ -66,8 +70,17 @@ public class DrinkFirestoreManager {
         doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Drink return_drink = documentSnapshot.toObject(Drink.class);
-                callback.onCallback(return_drink);
+                if(documentSnapshot.exists()) {
+                    Drink return_drink = documentSnapshot.toObject(Drink.class);
+                    callback.onCallback(return_drink);
+                } else {
+                    callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
             }
         });
     }

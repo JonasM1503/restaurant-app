@@ -1,9 +1,13 @@
 package com.example.restaurant_app.firestore;
 
+import androidx.annotation.NonNull;
+
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -11,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 /**
  *
- * @author Simon Rothmann
+ * @author Simon Rothmann, Jonas Mitschke
  * @content handler for CRUD-operations to firestore
  */
 public class RestaurantFirestoreManager {
@@ -52,14 +56,28 @@ public class RestaurantFirestoreManager {
         documentReference.delete();
     }
 
+// find restaurant by ID
     public interface GetRestaurantByIdCallback{
         void onCallback(Restaurant restaurant);
+        void onFailureCallback(Exception e);
     }
-    public void getRestaurantById(String restaurantId, final RestaurantFirestoreManager.GetRestaurantByIdCallback callback){
-        collectionReference.document(restaurantId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+    public void getRestaurantById(String id, final RestaurantFirestoreManager.GetRestaurantByIdCallback callback){
+        Task<DocumentSnapshot> doc = collectionReference.document(id).get();
+        doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                callback.onCallback(documentSnapshot.toObject(Restaurant.class));
+                if(documentSnapshot.exists()) {
+                    Restaurant return_restaurant = documentSnapshot.toObject(Restaurant.class);
+                    callback.onCallback(return_restaurant);
+                } else {
+                    callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
             }
         });
     }

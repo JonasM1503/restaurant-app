@@ -1,13 +1,12 @@
 package com.example.restaurant_app.firestore;
 
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -16,13 +15,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.List;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
-
 /**
  *
- * @author Simon Rothmann
+ * @author Simon Rothmann, Jonas Mitschke
  * @content handler for CRUD-operations to firestore
  */
 public class UserFirestoreManager {
@@ -67,6 +62,7 @@ public class UserFirestoreManager {
 // find user by email
     public interface GetUserByEmailCallback {
         void onCallback(User user);
+        void onFailureCallback(Exception e);
     }
 
     public void getUserByEmail(String email, final GetUserByEmailCallback callback){
@@ -74,11 +70,18 @@ public class UserFirestoreManager {
         doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-               User return_user = documentSnapshot.toObject(User.class);
-                callback.onCallback(return_user);
+                if(documentSnapshot.exists()) {
+                    User return_user = documentSnapshot.toObject(User.class);
+                    callback.onCallback(return_user);
+                } else {
+                    callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
             }
         });
     }
-
 }
-

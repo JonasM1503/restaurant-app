@@ -6,6 +6,7 @@ import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Category;
 import com.example.restaurant_app.models.CategorySpinner;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -98,6 +99,7 @@ public class CategoryFirestoreManager {
      */
     public interface GetCategoryByRestaurantCallback {
         void onCallback(ArrayList<CategorySpinner> categories);
+        void onFailureCallback(Exception e);
     }
 
     /**
@@ -119,7 +121,14 @@ public class CategoryFirestoreManager {
                                 categories.add(new CategorySpinner(category.getCategoryId(), category.getName()));
                             }
                             callback.onCallback(categories);
+                        } else {
+                            callback.onFailureCallback(new Exception(new ClassNotFoundException()));
                         }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        callback.onFailureCallback(exception);
                     }
                 });
     }

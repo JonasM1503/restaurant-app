@@ -1,9 +1,13 @@
 package com.example.restaurant_app.firestore;
 
+import androidx.annotation.NonNull;
+
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Address;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -11,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 /**
  *
- * @author Simon Rothmann
+ * @author Simon Rothmann, Jonas Mitschke
  * @content handler for CRUD-operations to firestore
  */
 public class AddressFirestoreManager {
@@ -53,15 +57,28 @@ public class AddressFirestoreManager {
         documentReference.delete();
     }
 
+// find address by ID
     public interface GetAddressByIdCallback{
         void onCallback(Address address);
+        void onFailureCallback(Exception e);
     }
 
-    public void getAddressById(String addressId, final AddressFirestoreManager.GetAddressByIdCallback callback){
-        collectionReference.document(addressId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+    public void getAddressById(String id, final AddressFirestoreManager.GetAddressByIdCallback callback){
+        Task<DocumentSnapshot> doc = collectionReference.document(id).get();
+        doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                callback.onCallback(documentSnapshot.toObject(Address.class));
+                if(documentSnapshot.exists()) {
+                    Address return_address = documentSnapshot.toObject(Address.class);
+                    callback.onCallback(return_address);
+                } else {
+                    callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
             }
         });
     }
