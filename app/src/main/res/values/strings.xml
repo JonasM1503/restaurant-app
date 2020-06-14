@@ -10,6 +10,8 @@
     <!--    Fehlermeldungen    -->
     <string name="toast_error">Ein Fehler ist aufgetreten</string>
     <string name="toast_error_no_example_table_found">Kein Beispieltisch gefunden!</string>
+    <string name="toast_error_category_is_used">Diese Kategorie wird noch von Speisen/Getränken verwendet</string>
+    <string name="toast_error_no_category_available">Bitte erstellen Sie zuerst eine Kategorie</string>
     <string name="toast_error_picture_upload">Ein Fehler beim Bild-Upload ist aufgetreten</string>
     <string name="toast_error_no_valid_qrcode">Ungültiger QR-Code</string>
     <string name="toast_error_permissions_missing">Bitte vergeben Sie die notwendigen Berechtigungen</string>
