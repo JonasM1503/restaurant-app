@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.restaurant_app.firestore.AddressFirestoreManager;
-import com.example.restaurant_app.firestore.RestaurantFirestoreManager;
 import com.example.restaurant_app.firestore.UserFirestoreManager;
 import com.example.restaurant_app.models.Address;
 import com.example.restaurant_app.models.Restaurant;
@@ -23,21 +21,16 @@ import com.example.restaurant_app.models.User;
  */
 
 public class RegistrationActivity extends AppCompatActivity {
-    private RestaurantFirestoreManager resManager;
     private UserFirestoreManager userManager;
-    private AddressFirestoreManager addressManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
 
-        resManager = RestaurantFirestoreManager.newInstance();
         userManager = UserFirestoreManager.newInstance();
-        addressManager = AddressFirestoreManager.newInstance();
 
         final Button registerButton = findViewById(R.id.finishRegistration);
-
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,27 +53,32 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 else {
                     Address address =  new Address(street, zipCode, city, "Germany");
-
                     Restaurant restaurant = new Restaurant(restaurantName, address, ustId);
-
                     final User newUser = new User(email, User.hashPassword(password), firstName, lastName, false, restaurant);
-                        userManager.getUserByEmail(email, new UserFirestoreManager.GetUserByEmailCallback() {
-                            @Override
-                            public void onCallback(User user) {
-                                if(user == null){
-                                    userManager.createUser(newUser);
-                                    Intent intent = new Intent(v.getContext(), MainActivity.class);
-                                    v.getContext().startActivity(intent);
-                                }
-                                else {
-                                    Toast toast = Toast.makeText(
-                                            getApplicationContext(),
-                                            "Benutzer bereits vorhanden, bitte mit neuer Email Probieren",
-                                            Toast.LENGTH_LONG);
-                                    toast.show();
-                                }
+
+                    userManager.getUserByEmail(email, new UserFirestoreManager.GetUserByEmailCallback() {
+                        @Override
+                        public void onCallback(User user) {
+                            if(user == null){
+                                userManager.createUser(newUser);
+                                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                                v.getContext().startActivity(intent);
                             }
-                        });
+                            else {
+                                Toast toast = Toast.makeText(
+                                        getApplicationContext(),
+                                        "Benutzer bereits vorhanden, bitte mit neuer Email Probieren",
+                                        Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailureCallback(Exception e) {
+                            Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.toast_error), Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    });
                 }
             }
         });

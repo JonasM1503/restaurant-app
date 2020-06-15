@@ -6,6 +6,7 @@ import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Category;
 import com.example.restaurant_app.models.CategorySpinner;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -98,6 +99,7 @@ public class CategoryFirestoreManager {
      */
     public interface GetCategoryByRestaurantCallback {
         void onCallback(ArrayList<CategorySpinner> categories);
+        void onFailureCallback(Exception e);
     }
 
     /**
@@ -119,8 +121,55 @@ public class CategoryFirestoreManager {
                                 categories.add(new CategorySpinner(category.getCategoryId(), category.getName()));
                             }
                             callback.onCallback(categories);
+                        } else {
+                            callback.onFailureCallback(new Exception(new ClassNotFoundException()));
                         }
                     }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        callback.onFailureCallback(exception);
+                    }
                 });
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  interface to check how often a category is used
+     */
+    public interface CheckIfCategoryIsUsedCallback {
+        void onCallback(int amount);
+        void onFailureCallback(Exception e);
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  check if category is used in foods/ drinks
+     * @param    catId       id of the category
+     * @param    callback    CheckIfCategoryIsUsedCallback-interface
+     */
+    public void checkIfCategoryIsUsed(String catId, final CategoryFirestoreManager.CheckIfCategoryIsUsedCallback callback){
+        FirebaseFirestore.getInstance().collection(CollectionNames.foodCollection).whereEqualTo("categoryId", catId).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        int amount = 0;
+                        if(task.isSuccessful()){
+                            for(DocumentSnapshot document : task.getResult()) {
+                                amount += 1;
+                            }
+                            callback.onCallback(amount);
+                        } else {
+                            callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
+            }
+        });
     }
 }

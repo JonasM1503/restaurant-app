@@ -1,26 +1,18 @@
 package com.example.restaurant_app.firestore;
 
-import android.widget.ListView;
-
 import androidx.annotation.NonNull;
 
-import com.example.restaurant_app.activities.FoodListActivity;
-import com.example.restaurant_app.activities.R;
-import com.example.restaurant_app.adapters.FoodListAdapter;
 import com.example.restaurant_app.helpers.CollectionNames;
 import com.example.restaurant_app.models.Food;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -76,6 +68,7 @@ public class FoodFirestoreManager {
      */
     public interface GetFoodByIdCallback {
         void onCallback(Food food);
+        void onFailureCallback(Exception e);
     }
 
     /**
@@ -90,11 +83,18 @@ public class FoodFirestoreManager {
         doc.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Food return_food = documentSnapshot.toObject(Food.class);
-                callback.onCallback(return_food);
+                if(documentSnapshot.exists()) {
+                    Food return_food = documentSnapshot.toObject(Food.class);
+                    callback.onCallback(return_food);
+                } else {
+                    callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                callback.onFailureCallback(exception);
             }
         });
     }
-
-
 }
