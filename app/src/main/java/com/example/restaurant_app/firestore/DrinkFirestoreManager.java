@@ -15,6 +15,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Simon Rothmann, Jonas Mitschke
@@ -83,5 +86,46 @@ public class DrinkFirestoreManager {
                 callback.onFailureCallback(exception);
             }
         });
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  interface to work with returned drinks from firestore
+     */
+    public interface GetDrinksByRestaurantCallback {
+        void onCallback(List<Drink> drinks);
+        void onFailureCallback(Exception e);
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  get drinks from firestore
+     * @param    resId       id of the restaurant
+     * @param    callback    GetDrinksByRestaurantCallback-interface
+     */
+    public void getDrinksByRestaurantId(String resId, final DrinkFirestoreManager.GetDrinksByRestaurantCallback callback){
+        collectionReference.whereEqualTo("restaurantId", resId).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        List<Drink> return_drinks = new ArrayList<>();
+                        if(task.isSuccessful()){
+                            for(DocumentSnapshot document : task.getResult()) {
+                                Drink drink = document.toObject(Drink.class);
+                                return_drinks.add(drink);
+                            }
+                            callback.onCallback(return_drinks);
+                        } else {
+                            callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        callback.onFailureCallback(exception);
+                    }
+                });
     }
 }

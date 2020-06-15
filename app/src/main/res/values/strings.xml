@@ -9,6 +9,7 @@
 
     <!--    Fehlermeldungen    -->
     <string name="toast_error">Ein Fehler ist aufgetreten</string>
+    <string name="toast_error_no_data">Es sind noch keine Daten verfügbar</string>
     <string name="toast_error_no_example_table_found">Kein Beispieltisch gefunden!</string>
     <string name="toast_error_category_is_used">Diese Kategorie wird noch von Speisen/Getränken verwendet</string>
     <string name="toast_error_no_category_available">Bitte erstellen Sie zuerst eine Kategorie</string>

@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -98,7 +99,7 @@ public class CategoryFirestoreManager {
      * @content  interface to work with returned categories from firestore
      */
     public interface GetCategoryByRestaurantCallback {
-        void onCallback(ArrayList<CategorySpinner> categories);
+        void onCallback(List<Category> categories);
         void onFailureCallback(Exception e);
     }
 
@@ -110,6 +111,47 @@ public class CategoryFirestoreManager {
      * @param    callback    GetCategoryByRestaurantCallback-interface
      */
     public void getCategoriesByRestaurantId(String resId, final CategoryFirestoreManager.GetCategoryByRestaurantCallback callback){
+        collectionReference.whereEqualTo("restaurantId", resId).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        List<Category> return_categories = new ArrayList<>();
+                        if(task.isSuccessful()){
+                            for(DocumentSnapshot document : task.getResult()) {
+                                Category category = document.toObject(Category.class);
+                                return_categories.add(category);
+                            }
+                            callback.onCallback(return_categories);
+                        } else {
+                            callback.onFailureCallback(new Exception(new ClassNotFoundException()));
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        callback.onFailureCallback(exception);
+                    }
+                });
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  interface to work with returned categories (CategorySpinner-objects) from firestore
+     */
+    public interface GetCategoryByRestaurantForSpinnerCallback {
+        void onCallback(ArrayList<CategorySpinner> categories);
+        void onFailureCallback(Exception e);
+    }
+
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  get categories from firestore & save in list with CategorySpinner-objects
+     * @param    resId       id of the restaurant
+     * @param    callback    GetCategoryByRestaurantCallback-interface
+     */
+    public void getCategoriesByRestaurantIdSpinner(String resId, final CategoryFirestoreManager.GetCategoryByRestaurantForSpinnerCallback callback){
         collectionReference.whereEqualTo("restaurantId", resId).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
