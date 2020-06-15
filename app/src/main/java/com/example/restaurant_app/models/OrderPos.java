@@ -1,46 +1,39 @@
 package com.example.restaurant_app.models;
 
-import java.util.UUID;
-
 /**
  *
  * @author Jonas Mitschke
  * @content definition of orderIdPos-class
  */
 public class OrderPos {
-    private String orderPosId;
-    private String orderId;
     private String foodId;
     private String drinkId;
+    private int quantity;
 
 
 // constructors
     public OrderPos() {}
 
-    public OrderPos(String orderId, Food food) {
-        this.orderPosId = UUID.randomUUID().toString();
-        this.orderId = orderId;
+    public OrderPos(Food food, int quantity) {
         this.foodId = food.getFoodId();
+        this.quantity = quantity;
     }
 
-    public OrderPos(String orderId, Drink drink) {
-        this.orderPosId = UUID.randomUUID().toString();
-        this.orderId = orderId;
+    public OrderPos(Drink drink, int quantity) {
         this.drinkId = drink.getDrinkId();
+        this.quantity = quantity;
     }
 
 // getters
-    public String getOrderPosId() { return this.orderPosId; }
-
-    public String getOrderId() { return this.orderId; }
-
     public String getFoodId() { return this.foodId; }
 
     public String getDrinkId() { return this.drinkId; }
 
-// setters
-    public void setOrderId(String orderId) { this.orderId = orderId; }
+    public int getQuantity() {
+        return quantity;
+    }
 
+    // setters
     public void setFoodId(String foodId) {
         if (this.drinkId != null) {
             this.drinkId = null;
@@ -53,5 +46,9 @@ public class OrderPos {
             this.foodId = null;
         }
         this.drinkId = drinkId;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
