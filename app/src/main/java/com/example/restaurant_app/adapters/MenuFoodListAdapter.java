@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.restaurant_app.activities.FoodDetailActivity;
+import com.example.restaurant_app.activities.MenuDetailActivity;
 import com.example.restaurant_app.activities.R;
 import com.example.restaurant_app.firestore.PictureFirestoreManager;
 import com.example.restaurant_app.models.Food;
@@ -46,7 +46,7 @@ public class MenuFoodListAdapter extends ArrayAdapter<Food>{
 
         itemMenuGroupLayout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), FoodDetailActivity.class);
+                Intent intent = new Intent(v.getContext(), MenuDetailActivity.class);
                 intent.putExtra("foodID", food.getFoodId());
                 v.getContext().startActivity(intent);
             }

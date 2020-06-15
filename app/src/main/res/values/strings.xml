@@ -72,7 +72,6 @@
     <string name="button_logout">Ausloggen</string>
     <string name="placeholderPicture">Hier klicken um Bild auszuwählen</string>
 
-
     <!--    Userverwaltung    -->
     <string name="button_login">Login</string>
     <string name="button_register">Registrieren</string>
@@ -108,4 +107,16 @@
     <!--  Speisekarte -->
     <string name="tab_food">Speisen</string>
     <string name="tab_drinks">Getränke</string>
+    <string name="headline_menu_detail">Übersicht</string>
+    <string name="button_add">Hinzufügen</string>
+    <string name="button_plus">+</string>
+    <string name="button_minus">-</string>
+    <string name="text_menu_item_name">Bezeichnung</string>
+    <string name="text_menu_item_price">Preis</string>
+    <string name="text_menu_item_description">Beschreibung</string>
+    <string name="text_menu_item_wish">Zusatzwünsche</string>
+    <string name="text_menu_item_quantity">Anzahl</string>
+    <string name="toast_item_added">Erfolgreich hinzugefügt</string>
+    <string name="toast_error_min_amount_reached">Mindestmenge erreicht</string>
+    <string name="toast_error_max_amount_reached">Maximalmenge erreicht</string>
 </resources>
