@@ -79,6 +79,8 @@
     <string name="button_addNewFood">Neue Speise anlegen</string>
     <string name="button_logout">Ausloggen</string>
     <string name="placeholderPicture">Hier klicken um Bild auszuwählen</string>
+    <string name="shopingCart_heading">Warenkorb</string>
+    <string name="shopingCart_finish_button">Abschicken</string>
 
     <!--    Userverwaltung    -->
     <string name="button_login">Login</string>
