@@ -26,6 +26,14 @@
     <string name="restaurantName_empty">Restaurantname darf nicht leer sein</string>
     <string name="ustId_empty">UstId darf nicht leer sein</string>
     <string name="pictureEmpty">Bild darf nicht leer sein</string>
+    <string name="drinkName_empty">Das Getränk braucht einen Namen</string>
+    <string name="drinkPrice_empty">Das Getränk braucht einen Preis</string>
+    <string name="drinkDescription_empty">Ein Getränk ohne Beschreibung?</string>
+    <string name="foodName_empty">Die Speise braucht einen Namen</string>
+    <string name="foodPrice_empty">Die Speise braucht einen Preis</string>
+    <string name="foodDescription_empty">Die Speise ohne Beschreibung?</string>
+    <string name="tableNumber_empty">Ein Tisch ohne Nummer? Wie soll man den denn finden?</string>
+
 
     <!--    Verwaltungsübersicht    -->
     <string name="headline_overview">Verwaltung</string>
