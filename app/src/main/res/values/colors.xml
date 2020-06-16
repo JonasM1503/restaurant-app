@@ -7,4 +7,6 @@
     <color name="QRCodeWhiteColor">#ffffff</color>
 
     <color name="QRCodeBlackColor">#000000</color>
+    <color name="ButtonColor">#008AF8</color>
+    <color name="BackgroundColor">#A8B7C3</color>
 </resources>
