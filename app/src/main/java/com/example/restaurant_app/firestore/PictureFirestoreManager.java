@@ -53,28 +53,30 @@ public class PictureFirestoreManager {
         return path[0];
     }
 
-    public boolean updateImage(String url, Bitmap picture){
+    public interface UpdateImageCallback {
+        void onCallback(Boolean successful);
+    }
+
+    public void updateImage(String url, Bitmap picture, final PictureFirestoreManager.UpdateImageCallback callback){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         picture.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        Boolean[] success = new Boolean[1];
         storageRef = storage.getReference(url);
         UploadTask uploadTask = storageRef.putBytes(data);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                success[0] = true;
+                callback.onCallback(true);
                 Log.i(TAG, "onSuccess: updated file");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                success[0] = false;
+                callback.onCallback(false);
                 Log.e(TAG, "onFailure: did not update file. Error: " + exception);
             }
         });
-        return success[0];
     }
 
     public void deleteImage(String url){
