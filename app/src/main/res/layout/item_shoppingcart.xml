@@ -32,5 +32,14 @@
         android:layout_marginTop="39dp"
         app:layout_constraintStart_toEndOf="@+id/shopingItemName"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_delete" />
+        android:src="@android:drawable/ic_menu_delete" />
+
+    <TextView
+        android:id="@+id/shopingCartQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toEndOf="@+id/shopingItemName"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

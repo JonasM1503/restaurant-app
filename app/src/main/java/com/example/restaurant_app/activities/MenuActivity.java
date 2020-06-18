@@ -101,7 +101,8 @@ public class MenuActivity extends AppCompatActivity {
                 shoppingCartButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(view.getContext(), ShopingCartActivity.class);
+                        view.getContext().startActivity(intent);
                     }
                 });
             }
