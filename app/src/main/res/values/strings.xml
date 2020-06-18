@@ -34,7 +34,6 @@
     <string name="foodDescription_empty">Die Speise ohne Beschreibung?</string>
     <string name="tableNumber_empty">Ein Tisch ohne Nummer? Wie soll man den denn finden?</string>
 
-
     <!--    Verwaltungsübersicht    -->
     <string name="headline_overview">Verwaltung</string>
     <string name="view_users_button">Userverwaltung</string>
@@ -129,4 +128,5 @@
     <string name="toast_item_added">Erfolgreich hinzugefügt</string>
     <string name="toast_error_min_amount_reached">Mindestmenge erreicht</string>
     <string name="toast_error_max_amount_reached">Maximalmenge erreicht</string>
+    <string name="toast_orderPos_removed">Bestellung wurde aktualisiert</string>
 </resources>

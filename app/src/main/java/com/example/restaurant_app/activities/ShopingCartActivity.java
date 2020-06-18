@@ -5,17 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-
 import com.example.restaurant_app.adapters.SharedPreferencesAdapter;
 import com.example.restaurant_app.adapters.ShopingCartAdapter;
-import com.example.restaurant_app.models.Order;
 import com.example.restaurant_app.models.OrderPos;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -41,19 +37,6 @@ public class ShopingCartActivity extends Activity {
        ListView shopingCartListView = findViewById(R.id.shopingCartList);
        ShopingCartAdapter shopingCartAdapter = new ShopingCartAdapter(ShopingCartActivity.this, orderPosList);
        shopingCartListView.setAdapter(shopingCartAdapter);
-
-       shopingCartListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-               orderPosList.remove(i);
-               List<String> orderPosStringListNew = new ArrayList<>();
-               for (int j=0; j<orderPosList.size(); j++) {
-                   orderPosStringListNew.add(gson.toJson(orderPosList.get(i)));
-               }
-               SharedPreferencesAdapter.setListDefaults("orderPostList", orderPosStringListNew, context);
-               shopingCartAdapter.notifyDataSetChanged();
-           }
-       });
 
        Button sendOrder = findViewById(R.id.shopingCartButton);
        sendOrder.setOnClickListener(new View.OnClickListener() {
