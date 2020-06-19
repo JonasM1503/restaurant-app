@@ -1,6 +1,6 @@
 package com.example.restaurant_app.models;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -12,12 +12,12 @@ public class Order {
     private String orderId;
     private String tableId;
     private Boolean paid;
-    private ArrayList<OrderPos> orderPosList;
+    private List<OrderPos> orderPosList;
 
 // constructors
     public Order() {}
 
-    public Order(String tableId, Boolean paid, ArrayList<OrderPos> orderPosList) {
+    public Order(String tableId, Boolean paid, List<OrderPos> orderPosList) {
         this.orderId = UUID.randomUUID().toString();
         this.tableId = tableId;
         this.paid = paid;
@@ -35,7 +35,7 @@ public class Order {
 
     public Boolean getPaid() { return this.paid; }
 
-    public ArrayList<OrderPos> getOrderPosList() {
+    public List<OrderPos> getOrderPosList() {
         return orderPosList;
     }
 
@@ -52,7 +52,7 @@ public class Order {
         this.paid = paid;
     }
 
-    public void setOrderPosList(ArrayList<OrderPos> orderPosList) {
+    public void setOrderPosList(List<OrderPos> orderPosList) {
         this.orderPosList = orderPosList;
     }
 }

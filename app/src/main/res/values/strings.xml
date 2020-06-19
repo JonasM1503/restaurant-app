@@ -129,4 +129,12 @@
     <string name="toast_error_min_amount_reached">Mindestmenge erreicht</string>
     <string name="toast_error_max_amount_reached">Maximalmenge erreicht</string>
     <string name="toast_orderPos_removed">Bestellung wurde aktualisiert</string>
+
+    <!--  E-Mails -->
+    <string name="email_subject">Neue Bestellung</string>
+    <string name="email_beginning">Folgende Bestellung wurde aufgegeben:</string>
+    <string name="email_item">Speise/Getränk: </string>
+    <string name="email_quantity">Anzahl: </string>
+    <string name="email_wish">Zusatzwünsche: </string>
+    <string name="toast_email_sent">Deine Bestellung wurde versendet</string>
 </resources>

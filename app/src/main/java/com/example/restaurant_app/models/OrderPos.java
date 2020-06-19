@@ -9,8 +9,8 @@ import java.util.UUID;
  */
 public class OrderPos {
     private String orderPosUUID;
-    private String foodId;
-    private String drinkId;
+    private Food food;
+    private Drink drink;
     private String wish;
     private int quantity;
 
@@ -20,14 +20,14 @@ public class OrderPos {
 
     public OrderPos(Food food, String wish, int quantity) {
         this.orderPosUUID = UUID.randomUUID().toString();
-        this.foodId = food.getFoodId();
+        this.food = food;
         this.wish = wish;
         this.quantity = quantity;
     }
 
     public OrderPos(Drink drink, String wish, int quantity) {
         this.orderPosUUID = UUID.randomUUID().toString();
-        this.drinkId = drink.getDrinkId();
+        this.drink = drink;
         this.wish = wish;
         this.quantity = quantity;
     }
@@ -37,9 +37,9 @@ public class OrderPos {
         return orderPosUUID;
     }
 
-    public String getFoodId() { return this.foodId; }
+    public Food getFood() { return this.food; }
 
-    public String getDrinkId() { return this.drinkId; }
+    public Drink getDrink() { return this.drink; }
 
     public String getWish() {
         return wish;
@@ -50,18 +50,18 @@ public class OrderPos {
     }
 
     // setters
-    public void setFoodId(String foodId) {
-        if (this.drinkId != null) {
-            this.drinkId = null;
+    public void setFood(Food food) {
+        if (this.drink != null) {
+            this.drink = null;
         }
-        this.foodId = foodId;
+        this.food = food;
     }
 
-    public void setDrinkId(String drinkId) {
-        if (this.foodId != null) {
-            this.foodId = null;
+    public void setDrink(Drink drink) {
+        if (this.food != null) {
+            this.food = null;
         }
-        this.drinkId = drinkId;
+        this.drink = drink;
     }
 
     public void setWish(String wish) {

@@ -12,10 +12,6 @@ import android.widget.Toast;
 
 import com.example.restaurant_app.activities.R;
 import com.example.restaurant_app.activities.ShopingCartActivity;
-import com.example.restaurant_app.firestore.DrinkFirestoreManager;
-import com.example.restaurant_app.firestore.FoodFirestoreManager;
-import com.example.restaurant_app.models.Drink;
-import com.example.restaurant_app.models.Food;
 import com.example.restaurant_app.models.OrderPos;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -71,36 +67,14 @@ public class ShopingCartAdapter extends ArrayAdapter<OrderPos> {
             }
         });
 
-        if (orderPos.getDrinkId() != null) {
-            DrinkFirestoreManager drinkFirestoreManager = DrinkFirestoreManager.newInstance();
-            drinkFirestoreManager.getDrinkById(orderPos.getDrinkId(), new DrinkFirestoreManager.GetDrinkByIdCallback() {
-                @Override
-                public void onCallback(Drink drink) {
-                    nameTextView.setText(drink.getName());
-                    priceTextView.setText(drink.getPrice().toString() + " €");
-                    quantityTextview.setText(Integer.toString(orderPos.getQuantity()));
-                }
-
-                @Override
-                public void onFailureCallback(Exception e) {
-
-                }
-            });
-        } else if (orderPos.getFoodId() != null) {
-            FoodFirestoreManager foodFirestoreManager = FoodFirestoreManager.newInstance();
-            foodFirestoreManager.getFoodById(orderPos.getFoodId(), new FoodFirestoreManager.GetFoodByIdCallback() {
-                @Override
-                public void onCallback(Food food) {
-                    nameTextView.setText(food.getName());
-                    priceTextView.setText(food.getPrice().toString() + " €");
-                    quantityTextview.setText(Integer.toString(orderPos.getQuantity()));
-                }
-
-                @Override
-                public void onFailureCallback(Exception e) {
-
-                }
-            });
+        if (orderPos.getDrink() != null) {
+            nameTextView.setText(orderPos.getDrink().getName());
+            priceTextView.setText(orderPos.getDrink().getPrice().toString() + " €");
+            quantityTextview.setText(Integer.toString(orderPos.getQuantity()));
+        } else if (orderPos.getFood() != null) {
+            nameTextView.setText(orderPos.getFood().getName());
+            priceTextView.setText(orderPos.getFood().getPrice().toString() + " €");
+            quantityTextview.setText(Integer.toString(orderPos.getQuantity()));
         }
         return convertView;
     }
