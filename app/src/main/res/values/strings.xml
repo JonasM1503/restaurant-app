@@ -137,4 +137,5 @@
     <string name="email_quantity">Anzahl: </string>
     <string name="email_wish">Zusatzwünsche: </string>
     <string name="toast_email_sent">Deine Bestellung wurde versendet</string>
+    <string name="back_to_menu">Zurück zur Speisekarte</string>
 </resources>
