@@ -40,4 +40,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shopingCartList" />
+
+    <Button
+        android:id="@+id/backToMenu"
+        android:layout_width="102dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/back_to_menu"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

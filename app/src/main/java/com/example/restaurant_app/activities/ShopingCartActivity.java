@@ -123,5 +123,15 @@ public class ShopingCartActivity extends Activity {
                });
            }
        });
+
+       Button backToMenuButton = findViewById(R.id.backToMenu);
+       backToMenuButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent = new Intent(view.getContext(), MenuActivity.class);
+               view.getContext().startActivity(intent);
+           }
+       });
    }
+
 }
