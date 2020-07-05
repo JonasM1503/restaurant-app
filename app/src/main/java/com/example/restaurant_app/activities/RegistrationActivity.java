@@ -17,7 +17,7 @@ import com.example.restaurant_app.models.User;
 /**
  *
  * @author Simon Rothmann
- * @content registration prozess
+ * @content registration process
  */
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -85,7 +85,8 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     /**
-     * Method checking for errors in user input while registration.
+     * @content method for checking for errors in user input while registration.
+     * @author Simomn Rothmann
      * @param firstName
      * @param lastName
      * @param email

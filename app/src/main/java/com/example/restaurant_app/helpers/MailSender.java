@@ -18,6 +18,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+
+/**
+ *
+ * @author Jonas Mitschke
+ * @content class for mail-sending
+ */
 public class MailSender extends javax.mail.Authenticator {
 
     private String mailhost = "smtp.ionos.de";
@@ -42,6 +48,15 @@ public class MailSender extends javax.mail.Authenticator {
         return new PasswordAuthentication(user, password);
     }
 
+    /**
+     *
+     * @author   Jonas Mitschke
+     * @content  send a mail with provided data
+     * @param    subject        subject of the mail
+     * @param    body           body of the mail
+     * @param    sender         sender-address for mail
+     * @param    recipients     recipients of the mail
+     */
     public synchronized void sendMail(String subject, String body, String sender, String recipients) throws Exception {
         try{
             final MimeMessage message = new MimeMessage(session);

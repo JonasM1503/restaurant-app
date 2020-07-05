@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 /**
  *
  * @author Simon Rothmann, Jonas Mitschke
- * @content registration process
+ * @content login process
  */
 public class LoginActivity extends AppCompatActivity {
     private UserFirestoreManager userManager;
